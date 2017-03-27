@@ -137,11 +137,12 @@ USE_TZ = True
 SETTINGS_DIR = os.path.dirname(os.path.realpath(__file__))
 BUILDOUT_DIR = os.path.abspath(os.path.join(SETTINGS_DIR, '..'))
 
-STATIC_URL = '/static/'
 if not PROD:
     MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
 else:
     MEDIA_URL = '/projects/media/'
+    STATIC_URL = '/projects/static/'
 
 MEDIA_ROOT = os.path.join(BUILDOUT_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
