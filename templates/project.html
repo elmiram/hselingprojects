@@ -36,7 +36,9 @@
         {% if p.link %}<p><b>Сайт проекта:</b> {{ p.link }}</p> {% endif %}
         <br>
         <p>{{ p.abstract }}</p>
-        <a href="{{ f.file.file.url }}"> {{ f.file}}</a>
+         {% if p.file %}
+            <a href="{{ p.file.file.url }}"> {{ p.file}}</a>
+            {% endif %}
 
 
         </div>
