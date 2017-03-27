@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
 
-from projects.views.pages import index, about, help
+from projects.views.pages import index, about, help, project
 from projects.views.profile import profile, register_user
 from projects.views.profile import newAuthor, newField, newTeacher
 from projects.views.profile import edit_project, model_form_upload
@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^help/', help, name='help'),
+    url(r'^project/([^/]+)', project, name='project'),
 
     url(r'^accounts/register/$', register_user, name='register'),
     url(r'^accounts/login/$', login, {'template_name': 'login.html'}, name='login'),

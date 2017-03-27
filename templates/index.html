@@ -72,7 +72,7 @@
             <tbody>
 			{% for f in projects %}
                 <tr>
-                    <td>{{ f.title }}</td>
+                    <td><a href="{% url 'project' f.id%}">{{ f.title }}</a></td>
                     <td>{{ f.author.all|join:", " }}</td>
                     <td>{{ f.prof.all|join:", " }}</td>
                     <td>{{ f.year }}</td>

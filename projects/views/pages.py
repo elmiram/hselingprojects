@@ -44,5 +44,10 @@ def about(request):
     return render(request, 'about.html')
 
 
+def project(request, id):
+    p = Project.objects.get(pk=id)
+    return render(request, 'project.html', locals())
+
+
 def help(request):
     return render(request, 'help.html')
