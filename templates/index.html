@@ -1,0 +1,88 @@
+{% extends '_base_basic.html' %}
+
+{% block body %}
+ <div class="rate-container">
+ <div class="col-sm-3">
+        <div class="row">
+            <h3 class="text-center">Фильтры</h3>
+            <form method="get" role="form" id="filter_form">
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="author" hidden>Авторы</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Автор" value="{{ author }}">
+                </div>
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="prof" hidden>Руководители</label>
+                    <input type="text" class="form-control" id="prof" name="prof" placeholder="Руководитель" value="{{ prof }}">
+                </div>
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="keywords" hidden>Ключевые слова</label>
+                    <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Ключевые слова" value="{{ keywords }}">
+                </div>
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="title" hidden>Название</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Слова в названии" value="{{ title }}">
+                </div>
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="abstract" hidden>Аннотация</label>
+                    <input type="text" class="form-control" id="abstract" name="abstract" placeholder="Слова в аннотации" value="{{ annot }}">
+                </div>
+                <div class="form-group col-sm-12  form-group-sm">
+                    <div class="input-group">
+                      <div class="input-group-addon">С</div>
+                      <input type="number" class="form-control" id="year1" name="year1" placeholder="2010" value="{{ year1 }}">
+                      <div class="input-group-addon">по</div>
+                        <input type="number" class="form-control" id="year2" name="year2" placeholder="2017" value="{{ year2 }}">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-12  form-group-sm">
+                    <label for="field">Разделы:</label>
+                        <select multiple="multiple" id="field" name="field" class="chosen-select"  multiple >
+                                {% for field in fields%}
+                                    <option value="{{ field.id }}" {% if field.id in selected_fields%}selected{% endif %}>{{ field }} </option>
+                                {% endfor %}
+                            </select>
+                </div>
+                <div class="row text-center">
+                    <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">Обновить</button>
+                    <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">Сбросить</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+ <div class="col-sm-9">
+        <div class="row">
+            <table  class="table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Авторы</th>
+                    <th>Руководители</th>
+                    <th>Год</th>
+                    <th>Ключевые слова</th>
+                    <th>Раздел</th>
+                    <th>Тип</th>
+                </tr>
+            </thead>
+            <tbody>
+			{% for f in projects %}
+                <tr>
+                    <td>{{ f.title }}</td>
+                    <td>{{ f.author.all|join:", " }}</td>
+                    <td>{{ f.prof.all|join:", " }}</td>
+                    <td>{{ f.year }}</td>
+                    <td>{{ f.keywords }}</td>
+                    <td>{{ f.field.all|join:", " }}</td>
+                    <td>{{ f.project_type}}</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+            </table>
+{#        {{ q }}#}
+        </div>
+    </div>
+ </div>
+{% endblock %}

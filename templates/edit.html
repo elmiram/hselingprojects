@@ -1,0 +1,212 @@
+{% extends '_base_basic.html' %}
+{% load static %}
+
+{% block headers %}
+	{{ block.super }}
+
+{% endblock %}
+
+{% block body %}
+
+    {% if not request.user.profile.is_approved %}
+    <div id='not_approved'>
+      <p>Вы пока что не можете просматривать эту страницу, так как ваш аккаунт на сайте не подтверждён.</p>
+      <p>Как только кто-то из модераторов проверит, что вы являетесь сотрудником или студентом Школы Лингвистики, вам на почту будет отправлено уведомление о подтверждении, и вы сможете просматривать страницы.</p>
+    </div>
+    {% endif %}
+        {% if request.user.profile.is_approved %}
+
+
+	<div class="rate-container">
+    <div class="col-sm-12">
+        <div class="row">
+           <h3 class="text-center">Редактирование проекта</h3>
+        <h4 class="text-center">{{ p.title}}</h4>
+        {{ errors }}
+
+            {% if show_form %}
+                {% if not valid %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Форма не прошла валидацию.
+                    </div>
+                    {% endif %}
+
+                <br><br>
+
+                <form action="{% url 'edit' request.user p_id %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    {% csrf_token %}
+                <label for="id_proj" hidden></label>
+                    <input id="id_proj" class="form-control hidden" name="id_proj" value="{{ p.id }}" required hidden>
+                    <label for="id_user" hidden>User</label>
+                    <input id="id_user" class="form-control hidden" name="user" value="{{ request.user.id }}" required hidden>
+                    <div class="row form-group">
+                        <label for="id_author" class="col-sm-3 control-label">Авторы</label>
+				        <div class="col-sm-5">
+                            {{ project_form.author.errors }}
+                            <select multiple="multiple" id="id_author" name="author" class="chosen-select" required  >
+                                {% for author in authors %}
+                                    <option value="{{ author.id }}" {% if author.id in author_set%}selected{% endif %}>{{ author }}</option>
+                                {% endfor %}
+                            </select>
+                        <a href="{% url "new_author" %}" class="add-another" id="add_id_author" onclick="return showAddAnotherPopup(this);">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+				        </div>
+			        </div>
+                    <div class="row form-group">
+                        <label for="id_prof" class="col-sm-3 control-label">Руководители</label>
+                        <div class="col-sm-5">
+                        {{ project_form.prof.errors }}
+                            <select multiple="multiple" id="id_prof" name="prof"  class="chosen-select" multiple required>
+                                {% for prof in teachers %}
+                                    <option value="{{ prof.id }}" {% if prof.id in prof_set%}selected{% endif %}>{{ prof}}</option>
+                                {% endfor %}
+                            </select>
+                            <a href="{% url "new_teacher" %}" class="add-another" id="add_id_prof" onclick="return showAddAnotherPopup(this);">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_year" class="col-sm-3 control-label" >Год</label>
+                        <div class="col-sm-8"><div class="col-sm-3">
+                            {{ project_form.year.errors }}
+                            <input id="id_year" name="year" type="number"  class="form-control" value="{{ p.year }}" required />
+                        </div></div>
+			        </div>
+                   <div class="row form-group">
+                        <label for="id_title" class="col-sm-3 control-label" >Название</label>
+                        <label for="id_title_en" class="col-sm-3 control-label" hidden>Название</label>
+                        <div class="col-sm-8">
+                            <div class="col-sm-6 ">
+                                {{ project_form.title.errors }}
+                                <input  class="form-control" id="id_title" maxlength="200" name="title" type="text" placeholder="на русском"  value="{{ p.title }}" required />
+                            </div>
+                            <div class="col-sm-6 ">
+                                {{ project_form.title_en.errors }}
+                                <input  class="form-control" id="id_title_en" maxlength="200" name="title_en" type="text" placeholder="на английском"  value="{{ p.title_en }}" required />
+                            </div>
+                        </div>
+                   </div>
+                    <div class="row form-group">
+                        <label for="id_keywords" class="col-sm-3 control-label" >Ключевые слова</label>
+                        <label for="id_keywords_en" class="col-sm-3 control-label" hidden>Ключевые слова</label>
+                        <div class="col-sm-8">
+                            <div class="col-sm-6 ">
+                                {{ project_form.keywords.errors }}
+                                <textarea  class="form-control"  cols="40" id="id_keywords" name="keywords" rows="2" placeholder="на русском" required>{{ p.keywords }}</textarea>
+                            </div>
+                            <div class="col-sm-6 ">
+                                {{ project_form.keywords_en.errors }}
+                                <textarea  class="form-control"  cols="40" id="id_keywords_en" name="keywords_en" rows="2" placeholder="на английском" required>{{ p.keywords_en }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_abstract" class="col-sm-3 control-label" >Аннотация</label>
+                        <label for="id_abstract_en" class="col-sm-3 control-label" hidden>Аннотация</label>
+                        <div class="col-sm-8">
+                            <div class="col-sm-6 ">
+                                {{ project_form.abstract.errors }}
+                                <textarea  class="form-control"  cols="40" id="id_abstract" name="abstract" rows="6" placeholder="на русском"  required>{{ p.abstract }}</textarea>
+                            </div>
+                            <div class="col-sm-6 ">
+                                {{ project_form.abstract_en.errors }}
+                                <textarea  class="form-control"  cols="40" id="id_abstract_en" name="abstract_en" rows="6" placeholder="на английском"  required>{{ p.abstract_en }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_link" class="col-sm-3 control-label" >Ссылка</label>
+                        <div class="col-sm-5">
+                            {{ project_form.link.errors }}
+                            <input id="id_link"  class="form-control"  maxlength="1000" name="link" type="text" value="{% if p.link %}{{ p.link }}{% endif %}" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_field" class="col-sm-3 control-label">Область лингвистики</label>
+                        <div class="col-sm-5">
+                        {{ project_form.field.errors }}
+                            <select multiple="multiple" id="id_field" name="field"  class="chosen-select" multiple required>
+                                {% for field in fields %}
+                                    <option value="{{ field.id }}" {% if field.id in field_set%}selected{% endif %}>{{ field }}</option>
+                                {% endfor %}
+                            </select>
+                            <a href="{% url "new_field" %}" class="add-another" id="add_id_field" onclick="return showAddAnotherPopup(this);">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_lang" class="col-sm-3 control-label" >Язык работы</label>
+                        <div class="col-sm-5">
+                        {{ project_form.lang.errors }}
+                            <select id="id_lang"  class="form-control" name="lang" required>
+                                <option value="" selected="selected">---------</option>
+                                {% for l in langs %}
+                                    <option value="{{ l.0 }}" {% if l.0 == p.lang%}selected{% endif %} >{{ l.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_form" class="col-sm-3 control-label" >Тип работы</label>
+                        <div class="col-sm-5">
+                        {{ project_form.form.errors }}
+                            <select id="id_form" name="form" class="form-control"  required>
+                                <option value="" selected="selected">---------</option>
+                                 {% for pr in project_types %}
+                                     <option value="{{ pr.0 }}" {% if pr.0 == p.form%}selected{% endif %}>{{ pr.1 }}</option>
+                                 {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="id_course" class="col-sm-3 control-label" >Курс</label>
+				        <div class="col-sm-5">
+                        {{ project_form.course.errors }}
+					        <select id="id_course"  class="form-control" name="course" required>
+                                <option value="" selected="selected">---------</option>
+                                 {% for c in courses %}
+                                    <option value="{{ c.0 }}"  {% if c.0 == p.course%}selected{% endif %}>{{ c.1 }}</option>
+                                 {% endfor %}
+                            </select>
+				        </div>
+			        </div>
+                    <div class="row form-group">
+                        <label for="id_file" class="col-sm-3 control-label">Файл работы</label>
+                        <div class="col-sm-5">
+                            {{ file_form.file.errors }}
+                            <input id="id_file"  type="file" class="form-control" name="file" value="{{ p.file }}">
+                        </div>
+                    </div>
+
+                    <span class="input-group-btn text-center">
+                        <button type="submit" class="btn btn-success">Сохранить</button>
+                    </span>
+                </form>
+            {% endif %}
+
+            {% if not show_form %}
+                {% if valid %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Форма прошла валидацию.
+                    </div>
+                {% endif %}
+
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Проект сохранен!
+                </div>
+                <p><a href="{% url 'upload' request.user %}" class="btn btn-info">Загрузить новый проект</a></p>
+          {% endif %}
+
+        <br><br>
+        </div>
+
+    </div>
+    </div>
+{% endif %}
+{% endblock %}

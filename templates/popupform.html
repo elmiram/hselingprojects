@@ -1,0 +1,28 @@
+{% extends '_base_basic.html' %}
+{% load static %}
+{% block nav %}{% endblock %}
+{% block body %}
+<h3>Добавление нового элемента: {{ field }}</h3>
+<form method="POST" action="/add/{{ field }}">
+     {% csrf_token %}
+
+    {% for f in form %}
+    <div class="row form-group">
+        {{ f.errors }}
+     <div class="col-sm-4 control-label">
+        {{ f.label_tag }}
+         </div>
+         <div class="col-sm-5">
+             {{ f }}
+         </div>
+        {% if f.help_text %}
+        <p class="help">{{ f.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success">Сохранить</button>&nbsp;
+                        <a href="javascript:window.close()" type="submit" class="btn btn-info">Закрыть</a>
+                    </span>
+</form>
+{% endblock %}

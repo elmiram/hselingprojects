@@ -1,0 +1,8 @@
+.secret.json
+*.sqlite3
+.git/
+.idea/
+.ipynb_checkpoints/
+*wsgi.py
+media/
+*migrations/

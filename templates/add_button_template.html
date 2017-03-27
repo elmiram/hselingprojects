@@ -1,0 +1,8 @@
+{% load static %}
+<a
+href="/add/{{ field }}"
+class="add-another"
+id="add_id_{{ field }}"
+onclick="return showAddAnotherPopup(this);">
+<img src="{%  static 'admin/img/icon-addlink.svg' %}" width="10" height="10" alt="Add Another"/>
+</a>
