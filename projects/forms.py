@@ -31,9 +31,9 @@ class UserCreationForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     first_name = forms.CharField()
     last_name = forms.CharField()
-    fathers_name = forms.CharField()
-    is_teacher = forms.BooleanField()
-    is_student = forms.BooleanField()
+    fathers_name = forms.CharField(required=False)
+    is_teacher = forms.BooleanField(required=False)
+    is_student = forms.BooleanField(required=False)
 
 
 class UserProfileForm(forms.Form):

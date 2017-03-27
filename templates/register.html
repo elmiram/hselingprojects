@@ -10,9 +10,11 @@
 	<div class="rate-container">
 
 		<h3 class="text-center">Регистрация нового пользователя</h3>
-
-		{% if error %}
+        {% if error %}
 			<div class="text-danger invalid_login">{{ error }}</div>
+		{% endif %}
+		{% if errors %}
+			<div class="text-danger invalid_login">{{ errors }}</div>
 		{% endif %}
 
 		<form action="{% url 'register' %}?next={{ next_page }}" method="post" class="form-horizontal register_form" role="form">

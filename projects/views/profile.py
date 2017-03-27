@@ -95,6 +95,8 @@ def register_user(request):
             login(request, user)
 
             return redirect(request.GET.get('next', '/') or '/')
+        errors = form.errors
+        return render(request, 'register.html', locals())
 
     form = UserCreationForm()
     next_page = request.GET.get('next', '/')
@@ -154,8 +156,11 @@ def edit_project(request, p_id):
             file_form = DictFileForm(request.POST, request.FILES)
             if file_form.is_valid():
                 p.file.file = request.FILES['file']
+            p.author.clear()
             p.author.add(*request.POST.getlist('author'))
+            p.field.clear()
             p.field.add(*request.POST.getlist('field'))
+            p.prof.clear()
             p.prof.add(*request.POST.getlist('prof'))
             p.title = request.POST['title']
             p.title_en = request.POST['title_en']
