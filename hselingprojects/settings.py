@@ -26,8 +26,8 @@ SECRET_KEY = SECRET["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = SECRET["DEBUG"]
-
-if DEBUG:
+PROD = '/home/elmiram' in BASE_DIR
+if not PROD:
     ALLOWED_HOSTS = []
 else:
     ALLOWED_HOSTS = ["92.242.58.138"]
