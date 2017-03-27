@@ -34,8 +34,9 @@ def index(request):
         if year2:
             projects = projects.filter(year__lte=year2)
         if selected_fields:
-            projects = projects.filter(field__in=selected_fields).distinct()
+            projects = projects.filter(field__in=selected_fields)
         selected_fields = [int(i) for i in selected_fields]
+        projects = projects.distinct()
     return render(request, 'index.html', locals())
 
 
