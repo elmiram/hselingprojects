@@ -138,11 +138,10 @@ SETTINGS_DIR = os.path.dirname(os.path.realpath(__file__))
 BUILDOUT_DIR = os.path.abspath(os.path.join(SETTINGS_DIR, '..'))
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+if not PROD:
+    MEDIA_URL = '/media/'
+else:
+    MEDIA_URL = '/projects/media/'
+
 MEDIA_ROOT = os.path.join(BUILDOUT_DIR, 'media')
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATICFILES_DIRS = (
-      os.path.join(BASE_DIR, 'static/'),
-    )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
