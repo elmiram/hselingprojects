@@ -111,7 +111,8 @@
 {#    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script>
-       $(".chosen-select").chosen({placeholder_text_multiple: "Выберите варианты", width: "92%"}).on('chosen:no_results', function(evt, params) {
+       $(".chosen-select").chosen({placeholder_text_multiple: " ", width: "92%"});
+       $(".chosen-select").on('chosen:showing_dropdown', function(evt, params) {
           $('.chosen-select').trigger('chosen:updated');
   });
   </script>

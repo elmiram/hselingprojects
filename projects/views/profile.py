@@ -180,6 +180,9 @@ def edit_project(request, p_id):
             errors = pr.errors
             show_form = True
             valid = False
+            field_set = set(p.field.values_list('id', flat=True))
+            prof_set = set(p.prof.values_list('id', flat=True))
+            author_set = set(p.author.values_list('id', flat=True))
             render(request, 'edit.html', locals())
     else:
         p = Project.objects.get(pk=p_id)
