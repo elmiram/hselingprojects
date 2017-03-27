@@ -3,7 +3,7 @@
 {% block nav %}{% endblock %}
 {% block body %}
 <h3>Добавление нового элемента: {{ field }}</h3>
-<form method="POST" action="/add/{{ field }}">
+<form method="POST" action="{% if prod %}/projects{% endif %}/add/{{ field }}">
      {% csrf_token %}
 
     {% for f in form %}

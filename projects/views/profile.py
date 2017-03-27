@@ -28,6 +28,7 @@ def newField(request):
 
 
 def handlePopAdd(request, addForm, field):
+    prod = settings.PROD
     if request.method == "POST":
         form = addForm(request.POST)
         if form.is_valid():
