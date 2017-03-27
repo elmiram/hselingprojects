@@ -140,17 +140,6 @@ def model_form_upload(request, user):
     return render(request, 'project_upload.html', locals())
 
 
-def handle_uploads(request, user):
-    if request.method == 'POST':
-        values = request.POST.getlist('files[]')
-        action = request.POST['action']
-        if action == 'delete':
-            for i in values:
-               Project.objects.get(pk=int(i)).delete()
-    pr = Project.objects.filter(user=request.user)
-    return render(request, 'user_files.html', {'files': pr})
-
-
 def edit_project(request, user, p_id):
     authors = Author.objects.all()
     teachers = Teacher.objects.all()

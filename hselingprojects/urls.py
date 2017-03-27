@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 from projects.views.pages import index, about, help
 from projects.views.profile import profile, register_user
 from projects.views.profile import newAuthor, newField, newTeacher
-from projects.views.profile import edit_project, model_form_upload, handle_uploads
+from projects.views.profile import edit_project, model_form_upload
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -38,8 +38,8 @@ urlpatterns = [
     url(r'^accounts/', include('password_reset.urls')),
 
     url(r'^profile/([^/]+)/$', profile, name="profile"),
-    url(r'^profile/([^/]+)/upload$', model_form_upload, name="upload"),
-    url(r'^profile/([^/]+)/edit/([^/]+)$', edit_project, name="edit"),
+    url(r'^upload$', model_form_upload, name="upload"),
+    url(r'^edit/([^/]+)$', edit_project, name="edit"),
 
     url(r'^add/author/?$', newAuthor, name="new_author"),
     url(r'^add/prof/?$', newTeacher, name="new_teacher"),
