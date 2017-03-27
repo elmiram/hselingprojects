@@ -101,7 +101,7 @@ def register_user(request):
     return render(request, 'register.html', locals())
 
 
-def model_form_upload(request, user):
+def model_form_upload(request):
     authors = Author.objects.all()
     teachers = Teacher.objects.all()
     fields = Field.objects.all()
@@ -140,7 +140,7 @@ def model_form_upload(request, user):
     return render(request, 'project_upload.html', locals())
 
 
-def edit_project(request, user, p_id):
+def edit_project(request, p_id):
     authors = Author.objects.all()
     teachers = Teacher.objects.all()
     fields = Field.objects.all()
