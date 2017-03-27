@@ -33,7 +33,7 @@
             </tbody>
             </table>
         {% if p.keywords %}<p><b>Ключевые слова:</b> {{ p.keywords }}</p> {% endif %}
-        {% if p.link %}<p><b>Сайт проекта:</b> {{ p.link }}</p> {% endif %}
+        {% if p.link %}<p><b>Сайт проекта:</b> <a href="{{ p.link }}">{{ p.link }}</a></p> {% endif %}
         <br>
         <p>{{ p.abstract }}</p>
          {% if p.file %}
