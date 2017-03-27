@@ -140,9 +140,9 @@ BUILDOUT_DIR = os.path.abspath(os.path.join(SETTINGS_DIR, '..'))
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BUILDOUT_DIR, 'media')
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-else:
-    STATICFILES_DIRS = (
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
       os.path.join(BASE_DIR, 'static/'),
     )
