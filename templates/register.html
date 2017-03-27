@@ -21,14 +21,14 @@
 			{% csrf_token %}
 
 			<div class="row form-group">
-				<label for="username" class="col-sm-4 control-label">Логин</label>
+				<label for="username" class="col-sm-4 control-label">Логин*</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="username" name="username" placeholder="Логин" required autofocus>
 				</div>
 			</div>
 
 			<div class="row form-group">
-				<label for="first_name" class="col-sm-4 control-label">Имя, фамилия</label>
+				<label for="first_name" class="col-sm-4 control-label">Фамилия*, имя*, отчество</label>
 				<div class="col-sm-5 ">
                     <div class="col-sm-4 left_column">
 						<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия" required>
@@ -45,13 +45,13 @@
 
 
 			<div class="row form-group">
-				<label for="email" class="col-sm-4 control-label">Почта</label>
+				<label for="email" class="col-sm-4 control-label">Почта*</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="email" name="email" placeholder="Почта" required>
 				</div>
 			</div>
 			<div class="row form-group">
-				<label for="password" class="col-sm-4 control-label">Пароль</label>
+				<label for="password" class="col-sm-4 control-label">Пароль*</label>
 				<div class="col-sm-5">
 					<div class="col-sm-6 ">
 						<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>

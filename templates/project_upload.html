@@ -37,7 +37,7 @@
                     <label for="id_user" hidden>User</label>
                     <input id="id_user" class="form-control hidden" name="user" value="{{ request.user.id }}" required hidden>
                     <div class="row form-group">
-                        <label for="id_author" class="col-sm-3 control-label">Авторы</label>
+                        <label for="id_author" class="col-sm-3 control-label">Авторы*</label>
 				        <div class="col-sm-5">
                             {{ project_form.author.errors }}
                             <select multiple="multiple" id="id_author" name="author" class="chosen-select" required  >
@@ -51,7 +51,7 @@
 				        </div>
 			        </div>
                     <div class="row form-group">
-                        <label for="id_prof" class="col-sm-3 control-label">Руководители</label>
+                        <label for="id_prof" class="col-sm-3 control-label">Руководители*</label>
                         <div class="col-sm-5">
                         {{ project_form.prof.errors }}
                             <select multiple="multiple" id="id_prof" name="prof"  class="chosen-select" multiple required>
@@ -65,14 +65,14 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_year" class="col-sm-3 control-label" >Год</label>
+                        <label for="id_year" class="col-sm-3 control-label" >Год*</label>
                         <div class="col-sm-8"><div class="col-sm-3">
                             {{ project_form.year.errors }}
                             <input id="id_year" name="year" type="number"  class="form-control"  required />
                         </div></div>
 			        </div>
                    <div class="row form-group">
-                        <label for="id_title" class="col-sm-3 control-label" >Название</label>
+                        <label for="id_title" class="col-sm-3 control-label" >Название*</label>
                         <label for="id_title_en" class="col-sm-3 control-label" hidden>Название</label>
                         <div class="col-sm-8">
                             <div class="col-sm-6 ">
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_field" class="col-sm-3 control-label">Область лингвистики</label>
+                        <label for="id_field" class="col-sm-3 control-label">Область лингвистики*</label>
                         <div class="col-sm-5">
                         {{ project_form.field.errors }}
                             <select multiple="multiple" id="id_field" name="field"  class="chosen-select" multiple required>
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_lang" class="col-sm-3 control-label" >Язык работы</label>
+                        <label for="id_lang" class="col-sm-3 control-label" >Язык работы*</label>
                         <div class="col-sm-5">
                         {{ project_form.lang.errors }}
                             <select id="id_lang"  class="form-control" name="lang" required>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_form" class="col-sm-3 control-label" >Тип работы</label>
+                        <label for="id_form" class="col-sm-3 control-label" >Тип работы*</label>
                         <div class="col-sm-5">
                         {{ project_form.form.errors }}
                             <select id="id_form" name="form" class="form-control"  required>
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_course" class="col-sm-3 control-label" >Курс</label>
+                        <label for="id_course" class="col-sm-3 control-label" >Курс*</label>
 				        <div class="col-sm-5">
                         {{ project_form.course.errors }}
 					        <select id="id_course"  class="form-control" name="course" required>
