@@ -32,7 +32,7 @@
 
                 <br><br>
 
-                <form action="{% url 'upload' request.user %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
                     {% csrf_token %}
                     <label for="id_user" hidden>User</label>
                     <input id="id_user" class="form-control hidden" name="user" value="{{ request.user.id }}" required hidden>

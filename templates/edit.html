@@ -34,7 +34,7 @@
 
                 <br><br>
 
-                <form action="{% url 'edit' request.user p_id %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                <form action="{% url 'edit' p_id %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
                     {% csrf_token %}
                 <label for="id_proj" hidden></label>
                     <input id="id_proj" class="form-control hidden" name="id_proj" value="{{ p.id }}" required hidden>
