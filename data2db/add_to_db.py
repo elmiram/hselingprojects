@@ -45,5 +45,7 @@ for w in works:
     if w['file']:
         file = save_file(w['file'])
         p.file = file
+    if w['mark']:
+        p.mark = int(w['mark'])
     p.save()
 

@@ -123,6 +123,8 @@ class Project(models.Model):
     keywords_en = models.TextField(verbose_name=_('ключевые слова на английском'), blank=True, null=True)
     abstract = models.TextField(verbose_name=_('аннотация на русском'), blank=True, null=True)
     abstract_en = models.TextField(verbose_name=_('аннотация на английском'), blank=True, null=True)
+    mark = models.IntegerField(verbose_name=_('оценка'), blank=True, null=True,
+                               validators=[MinValueValidator(0), MaxValueValidator(10)])
     file = models.ForeignKey(DictFile, blank=True, null=True, verbose_name=_('файл'))
     link = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_('ссылка'))
     field = models.ManyToManyField(Field, verbose_name=_('сфера'), blank=True)

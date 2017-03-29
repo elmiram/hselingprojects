@@ -175,16 +175,28 @@
 				        </div>
 			        </div>
                     <div class="row form-group">
+                        <label for="id_mark" class="col-sm-3 control-label" >Оценка</label>
+                        <div class="col-sm-8"><div class="col-sm-3">
+                            {{ project_form.mark.errors }}
+                            <input id="id_mark" name="mark" type="number"  class="form-control"  value="{{ p.mark }}"/>
+                        </div></div>
+			        </div>
+                    <div class="row form-group">
                         <label for="id_file" class="col-sm-3 control-label">Файл работы</label>
                         <div class="col-sm-5">
                             {{ file_form.file.errors }}
-                            <input id="id_file"  type="file" class="form-control" name="file" value="{{ p.file }}">
+                            <input id="id_file"  type="file" class="form-control" name="file">
+                            {% if p.file %}
+                                <p class="text-danger">Если вы загрузите новый файл, текущий файл будет удален.</p>
+                                <a href="{{ p.file.file.url }}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ p.file}}</a>
+                            {% endif %}
                         </div>
                     </div>
 
-                    <span class="input-group-btn text-center">
+                    <div class="row text-center">
                         <button type="submit" class="btn btn-success">Сохранить</button>
-                    </span>
+                        <a href="javascript:history.go(0)" class="btn btn-warning">Отменить изменения</a>
+                    </div>
                 </form>
             {% endif %}
 

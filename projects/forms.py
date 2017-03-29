@@ -78,4 +78,4 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('user', 'author', 'prof', 'year', 'title', 'keywords', 'abstract',
-                  'title_en', 'keywords_en', 'abstract_en',  'link', 'field', 'lang', 'form', 'course')
+                  'title_en', 'keywords_en', 'abstract_en',  'link', 'field', 'lang', 'form', 'course', 'mark')

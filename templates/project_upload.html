@@ -171,6 +171,13 @@
 				        </div>
 			        </div>
                     <div class="row form-group">
+                        <label for="id_mark" class="col-sm-3 control-label" >Оценка</label>
+                        <div class="col-sm-8"><div class="col-sm-3">
+                            {{ project_form.mark.errors }}
+                            <input id="id_mark" name="mark" type="number"  class="form-control"/>
+                        </div></div>
+			        </div>
+                    <div class="row form-group">
                         <label for="id_file" class="col-sm-3 control-label">Файл работы</label>
                         <div class="col-sm-5">
                             {{ file_form.file.errors }}
