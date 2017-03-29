@@ -4,7 +4,7 @@
  <div class="rate-container">
  <div class="col-sm-12">
         <div class="row">
-         <table  class="table">
+         <table  class="table table-responsive">
             <thead>
                 <tr>
                     <th>Название</th>
@@ -26,7 +26,7 @@
                     <td>{{ p.author.all|join:", " }}</td>
                     <td>{{ p.prof.all|join:", " }}</td>
                     <td>{{ p.year }}</td>
-                    <td>{{ p.course_verbose }}</td>
+                    <td class="fit">{{ p.course_verbose }}</td>
                     <td>{{ p.field.all|join:", " }}</td>
                     <td>{{ p.project_type}}</td>
                     {% if request.user.is_staff or request.user.profile.is_teacher %}
