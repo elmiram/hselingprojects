@@ -31,16 +31,15 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^help/', help, name='help'),
-    url(r'^project/([^/]+)', project, name='project'),
+    url(r'^project/([^/]+)', project, name='project'),  # id проекта
+    url(r'^profile/([^/]+)/$', profile, name="profile"),  # username
+    url(r'^upload$', model_form_upload, name="upload"),
+    url(r'^edit/([^/]+)$', edit_project, name="edit"),  # id проекта
 
     url(r'^accounts/register/$', register_user, name='register'),
     url(r'^accounts/login/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^accounts/logout/$', logout, {'next_page': settings.LOGIN_REDIRECT_URL}, name='logout'),
     url(r'^accounts/', include('password_reset.urls')),
-
-    url(r'^profile/([^/]+)/$', profile, name="profile"),
-    url(r'^upload$', model_form_upload, name="upload"),
-    url(r'^edit/([^/]+)$', edit_project, name="edit"),
 
     url(r'^add/author/?$', newAuthor, name="new_author"),
     url(r'^add/prof/?$', newTeacher, name="new_teacher"),

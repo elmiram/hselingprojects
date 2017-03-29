@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+Function views which correspond to index page, /help, /about and /project pages on website.
+
+index() - does all the filtering on main page.
+project() - collects project from database by id and renders it to project.html
+about() and help() - render about.html and help.html
+"""
+
 from django.shortcuts import render
 from projects.models import *
 
