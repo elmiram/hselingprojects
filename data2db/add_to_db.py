@@ -29,7 +29,7 @@ def save_file(url):
     return d
 
 
-with open('hse_vkr.json', 'r', encoding='utf-8') as f:
+with open('hse_ma_vkr.json', 'r', encoding='utf-8') as f:
     works = json.loads(f.read())
 
 for w in works:
