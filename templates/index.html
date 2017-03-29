@@ -6,27 +6,27 @@
         <div class="row">
             <h3 class="text-center">Фильтры</h3>
             <form method="get" role="form" id="filter_form">
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="author" hidden>Авторы</label>
                     <input type="text" class="form-control" id="author" name="author" placeholder="Автор" value="{{ author }}">
                 </div>
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="prof" hidden>Руководители</label>
                     <input type="text" class="form-control" id="prof" name="prof" placeholder="Руководитель" value="{{ prof }}">
                 </div>
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="keywords" hidden>Ключевые слова</label>
                     <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Ключевые слова" value="{{ keywords }}">
                 </div>
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="title" hidden>Название</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Слова в названии" value="{{ title }}">
                 </div>
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="abstract" hidden>Аннотация</label>
                     <input type="text" class="form-control" id="abstract" name="abstract" placeholder="Слова в аннотации" value="{{ annot }}">
                 </div>
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <div class="input-group">
                       <div class="input-group-addon">С</div>
                       <input type="number" class="form-control" id="year1" name="year1" placeholder="2010" value="{{ year1 }}">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="form-group col-sm-12  form-group-sm">
+                <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="field">Разделы:</label>
                         <select multiple="multiple" id="field" name="field" class="chosen-select"  multiple >
                                 {% for field in fields%}
@@ -43,6 +43,19 @@
                                 {% endfor %}
                             </select>
                 </div>
+
+                <div class="form-group col-sm-12  form-group-sm indexpage">
+                    <label>Тип работы:</label>
+                    {% for t in project_types%}
+                        <div class="checkbox indexpage">
+                            <label>
+                                <input type="checkbox" name="project_type" class="check" value="{{ t.0 }}" {% if t.0 in selected_types %}checked{% endif %}>
+                                {{ t.1 }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+
                 <div class="row text-center">
                     <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">Обновить</button>
                     <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">Сбросить</a>

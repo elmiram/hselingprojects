@@ -6,6 +6,7 @@ from projects.models import *
 def index(request):
     projects = Project.objects.all()
     fields = Field.objects.all()
+    project_types = Project.formChoices
     q = request.GET
     if q:
         author = q['author']
@@ -15,6 +16,7 @@ def index(request):
         annot = q['abstract']
         year1, year2 = q['year1'], q['year2']
         selected_fields = q.getlist('field')
+        selected_types = q.getlist('project_type')
         if author:
             projects = projects.filter(author__a_second_name__contains=author.capitalize())
         if title:
@@ -35,6 +37,8 @@ def index(request):
             projects = projects.filter(year__lte=year2)
         if selected_fields:
             projects = projects.filter(field__in=selected_fields)
+        if selected_types:
+            projects = projects.filter(form__in=selected_types)
         selected_fields = [int(i) for i in selected_fields]
         projects = projects.distinct()
     return render(request, 'index.html', locals())
