@@ -11,6 +11,7 @@
                     <th>Авторы</th>
                     <th>Руководители</th>
                     <th>Год</th>
+                    <th>Курс</th>
                     <th>Раздел</th>
                     <th>Тип</th>
                     <th>Оценка</th>
@@ -25,6 +26,7 @@
                     <td>{{ p.author.all|join:", " }}</td>
                     <td>{{ p.prof.all|join:", " }}</td>
                     <td>{{ p.year }}</td>
+                    <td>{{ p.course }}</td>
                     <td>{{ p.field.all|join:", " }}</td>
                     <td>{{ p.project_type}}</td>
                     {% if request.user.is_staff or request.user.profile.is_teacher %}
