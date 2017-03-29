@@ -75,7 +75,7 @@
                     <th>Руководители</th>
                     <th>Год</th>
                     <th>Курс</th>
-                    <th>Ключевые слова</th>
+{#                    <th>Ключевые слова</th>#}
                     <th>Раздел</th>
                     <th>Тип</th>
                     <th>Оценка</th>
@@ -92,7 +92,7 @@
                     <td>{{ f.prof.all|join:", " }}</td>
                     <td>{{ f.year }}</td>
                     <td>{{ f.course_verbose }}</td>
-                    <td>{{ f.keywords }}</td>
+{#                    <td>{{ f.keywords }}</td>#}
                     <td>{{ f.field.all|join:", " }}</td>
                     <td>{{ f.project_type}}</td>
                     {% if request.user.is_staff or request.user.profile.is_teacher %}
