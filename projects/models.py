@@ -148,3 +148,7 @@ class Project(models.Model):
     @property
     def project_type(self):
         return dict(self.formChoices)[self.form]
+
+    @property
+    def course_verbose(self):
+        return dict(self.courseChoices)[self.course]
