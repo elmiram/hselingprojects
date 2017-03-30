@@ -31,7 +31,7 @@ PROD = '/home/elmiram' in BASE_DIR
 if not PROD:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ["92.242.58.138"]
+    ALLOWED_HOSTS = ["92.242.58.138", 'www.linghub.ru', 'linghub.ru']
 
 
 EMAIL_HOST = 'smtp.gmail.com'
