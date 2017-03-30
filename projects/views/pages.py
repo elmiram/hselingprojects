@@ -57,6 +57,8 @@ def index(request):
             projects = projects.filter(field__in=selected_fields)
         if selected_types:
             projects = projects.filter(form__in=selected_types)
+        if 'best_only' in q:
+            projects = projects.filter(mark__gte=8)
         selected_fields = [int(i) for i in selected_fields]
         projects = projects.distinct()
     return render(request, 'index.html', locals())

@@ -5,8 +5,8 @@
 
 {% block body %}
  <div class="rate-container">
- <form method="get" role="form" id="filter_form">
  <div class="col-sm-3">
+    <form method="get" role="form" id="filter_form">
         <div class="row">
             <h3 class="text-center">{% trans "Фильтры" %}</h3>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
@@ -64,13 +64,22 @@
                         </div>
                     {% endfor %}
                 </div>
+                <div class="form-group col-sm-12  form-group-sm indexpage">
+                    <div class="checkbox indexpage">
+                        <label>
+                            <input type="checkbox" name="best_only" class="check" {% if t.0 in selected_types %}checked{% endif %}>
+                            {% trans 'Смотреть только лучшие работы' %}
+                        </label>
+                    </div>
+                </div>
 
                 <div class="row text-center">
                     <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">{% trans "Обновить" %}</button>
                     <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">{% trans "Сбросить" %}</a>
                 </div>
         </div>
-    </div>
+    </form>
+ </div>
  <div class="col-sm-9">
         <div class="row">
             <table  class="table table-responsive" id="projectstable">
@@ -115,8 +124,7 @@
                                 {% else %}
                                     {{a.a_first_name_en}} {{a.a_second_name_en}}
                                 {% endif %}
-                            </a>
-                            {% if not forloop.last %}, {% endif %}
+                            </a>{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td>
@@ -135,12 +143,7 @@
                     <td class="fit">{% trans p.course_verbose %}</td>
                     <td>
                         {% for f in p.field.all %}
-                            {% if LANGUAGE_CODE == 'ru' %}
-                                {{ f.name }}
-                            {% else %}
-                                {{ f.name_en}}
-                            {% endif %}
-                            {% if not forloop.last %}, {% endif %}
+                            {% if LANGUAGE_CODE == 'ru' %}{{ f.name }}{% else %}{{ f.name_en}}{% endif %}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td>{% trans p.project_type %}</td>
@@ -165,6 +168,5 @@
 {#        {{ q }}#}
         </div>
     </div>
- </form>
  </div>
 {% endblock %}
