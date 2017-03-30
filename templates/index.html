@@ -104,6 +104,11 @@
                                 {{p.title_en}}
                             {% endif %}
                         </a>
+                        {% if request.user.is_authenticated %}
+                             {% if p.file %}
+                                <a href="{{ p.file.file.url }}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                             {% endif %}
+                        {% endif %}
                     </td>
                     <td>
                         {% for a in p.author.all %}
