@@ -42,7 +42,13 @@
                     <label for="field">{% trans "Разделы" %}:</label>
                         <select multiple="multiple" id="field" name="field" class="chosen-select"  multiple >
                                 {% for field in fields%}
-                                    <option value="{{ field.id }}" {% if field.id in selected_fields%}selected{% endif %}>{{ field }} </option>
+                                    <option value="{{ field.id }}" {% if field.id in selected_fields%}selected{% endif %}>
+                                        {% if LANGUAGE_CODE == 'ru' %}
+                                            {{ field.name }}
+                                        {% else %}
+                                            {{ field.name_en}}
+                                        {% endif %}
+                                    </option>
                                 {% endfor %}
                             </select>
                 </div>
