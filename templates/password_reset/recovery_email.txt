@@ -4,7 +4,7 @@
 
 Вы можете установить новый пароль, пройдя по ссылке:
 
-http{% if secure %}s{% endif %}://vvv.ru{% url "password_reset_reset" token %}
+http{% if secure %}s{% endif %}://linghub.ru/projects{% url "password_reset_reset" token %}
 
 Если вы не отправляли подобный запрос, то просто проигнорируйте это письмо.
 
