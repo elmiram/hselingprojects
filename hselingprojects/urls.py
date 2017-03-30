@@ -22,7 +22,7 @@ from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
 
-from projects.views.pages import index, about, help, project, set_lang
+from projects.views.pages import index, about, help, project, author_view, teacher_view, set_lang
 from projects.views.profile import profile, register_user
 from projects.views.profile import newAuthor, newField, newTeacher
 from projects.views.profile import edit_project, model_form_upload
@@ -37,6 +37,8 @@ urlpatterns += i18n_patterns(
     url(r'^about/$', about, name='about'),
     url(r'^help/', help, name='help'),
     url(r'^project/([^/]+)', project, name='project'),  # id проекта
+    url(r'^author/([^/]+)', author_view, name='author'),  # id
+    url(r'^teacher/([^/]+)', teacher_view, name='teacher'),  # id
     url(r'^profile/([^/]+)/$', profile, name="profile"),  # username
     url(r'^upload$', model_form_upload, name="upload"),
     url(r'^edit/([^/]+)$', edit_project, name="edit"),  # id проекта

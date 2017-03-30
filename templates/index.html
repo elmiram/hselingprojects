@@ -107,21 +107,25 @@
                     </td>
                     <td>
                         {% for a in p.author.all %}
-                            {% if LANGUAGE_CODE == 'ru' %}
-                                {{a.a_second_name}} {{a.a_first_name}} {{a.a_fathers_name}}
-                            {% else %}
-                                {{a.a_first_name_en}} {{a.a_second_name_en}}
-                            {% endif %}
+                            <a href="{% url 'author' a.id %}">
+                                {% if LANGUAGE_CODE == 'ru' %}
+                                    {{a.a_second_name}} {{a.a_first_name}} {{a.a_fathers_name}}
+                                {% else %}
+                                    {{a.a_first_name_en}} {{a.a_second_name_en}}
+                                {% endif %}
+                            </a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td>
                         {% for t in p.prof.all %}
-                            {% if LANGUAGE_CODE == 'ru' %}
-                                {{t.t_second_name}} {{t.t_first_name}} {{t.t_fathers_name}}
-                            {% else %}
-                                {{t.t_first_name_en}} {{t.t_second_name_en}}
-                            {% endif %}
+                            <a href="{% url 'teacher' t.id %}">
+                                {% if LANGUAGE_CODE == 'ru' %}
+                                    {{t.t_second_name}} {{t.t_first_name}} {{t.t_fathers_name}}
+                                {% else %}
+                                    {{t.t_first_name_en}} {{t.t_second_name_en}}
+                                {% endif %}
+                            </a>
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
