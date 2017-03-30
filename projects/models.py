@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 import os
 import json
 
@@ -45,12 +45,16 @@ class UserProfile(models.Model):
                 subject = status_email['approved_subject']
                 message = status_email['approved'].format(self.user.first_name)
                 from_email = settings.EMAIL_HOST_USER
-                send_mail(subject, message, from_email, [self.user.email], fail_silently=False)
+                msg = EmailMessage(subject, message, from_email, [self.user.email])
+                msg.content_subtype = "html"
+                msg.send()
             if not old.is_declined == self.is_declined and self.is_declined:
-                subject = status_email['approved_subject']
-                message = status_email['approved'].format(self.user.first_name)
+                subject = status_email['declined_subject']
+                message = status_email['declined'].format(self.user.first_name)
                 from_email = settings.EMAIL_HOST_USER
-                send_mail(subject, message, from_email, [self.user.email], fail_silently=False)
+                msg = EmailMessage(subject, message, from_email, [self.user.email])
+                msg.content_subtype = "html"
+                msg.send()
         super(UserProfile, self).save()
 
 
