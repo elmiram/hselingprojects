@@ -5,10 +5,10 @@
 
 {% block body %}
  <div class="rate-container">
+ <form method="get" role="form" id="filter_form">
  <div class="col-sm-3">
         <div class="row">
             <h3 class="text-center">{% trans "Фильтры" %}</h3>
-            <form method="get" role="form" id="filter_form">
                 <div class="form-group col-sm-12  form-group-sm indexpage">
                     <label for="author" hidden>{% trans "Авторы" %}</label>
                     <input type="text" class="form-control" id="author" name="author" placeholder="{% trans "Автор" %}" value="{{ author }}">
@@ -69,14 +69,11 @@
                     <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">{% trans "Обновить" %}</button>
                     <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">{% trans "Сбросить" %}</a>
                 </div>
-
-
-            </form>
         </div>
     </div>
  <div class="col-sm-9">
         <div class="row">
-            <table  class="table table-responsive">
+            <table  class="table table-responsive" id="projectstable">
             <thead>
                 <tr>
                     <th>{% trans "Название" %}</th>
@@ -168,5 +165,6 @@
 {#        {{ q }}#}
         </div>
     </div>
+ </form>
  </div>
 {% endblock %}
