@@ -1,4 +1,6 @@
 {% extends '_base_basic.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block body %}
  <div class="rate-container">
@@ -7,14 +9,14 @@
          <table  class="table table-responsive">
             <thead>
                 <tr>
-                    <th>Название</th>
-                    <th>Авторы</th>
-                    <th>Руководители</th>
-                    <th>Год</th>
-                    <th>Курс</th>
-                    <th>Раздел</th>
-                    <th>Тип</th>
-                    <th>Оценка</th>
+                    <th>{% trans "Название" %}</th>
+                    <th>{% trans "Авторы" %}</th>
+                    <th>{% trans "Руководители" %}</th>
+                    <th>{% trans "Год" %}</th>
+                    <th>{% trans "Курс" %}</th>
+                    <th>{% trans "Раздел" %}</th>
+                    <th>{% trans "Тип" %}</th>
+                    <th>{% trans "Оценка" %}</th>
                     {% if request.user.is_staff %}
                         <th></th>
                     {% endif %}
@@ -22,15 +24,48 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ p.title }}</td>
-                    <td>{{ p.author.all|join:", " }}</td>
-                    <td>{{ p.prof.all|join:", " }}</td>
+                    <td>
+                        {% if LANGUAGE_CODE == 'ru' %}
+                           {{ p.title }}
+                        {% else %}
+                            {{p.title_en}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for a in p.author.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{a.a_second_name}} {{a.a_first_name}} {{a.a_fathers_name}}
+                            {% else %}
+                                {{a.a_first_name_en}} {{a.a_second_name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for t in p.prof.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{t.t_second_name}} {{t.t_first_name}} {{t.t_fathers_name}}
+                            {% else %}
+                                {{t.t_first_name_en}} {{t.t_second_name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
                     <td>{{ p.year }}</td>
-                    <td class="fit">{{ p.course_verbose }}</td>
-                    <td>{{ p.field.all|join:", " }}</td>
-                    <td>{{ p.project_type}}</td>
+                    <td class="fit">{% trans p.course_verbose %}</td>
+                    <td>
+                        {% for f in p.field.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{ f.name }}
+                            {% else %}
+                                {{ f.name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{% trans p.project_type %}</td>
                     {% if request.user.is_staff or request.user.profile.is_teacher %}
-                        <td>{% if f.mark %}{{ f.mark}}{% endif %}</td>
+                        <td>{% if p.mark %}{{ p.mark}}{% endif %}</td>
                     {% else %}
                         <td>
                         {% if p.mark %}
@@ -46,13 +81,28 @@
                 </tr>
             </tbody>
             </table>
-        {% if p.keywords %}<p><b>Ключевые слова:</b> {{ p.keywords }}</p> {% endif %}
-        {% if p.link %}<p><b>Сайт проекта:</b> <a href="{{ p.link }}">{{ p.link }}</a></p> {% endif %}
+        {% if p.keywords %}
+            <p>
+                <b>{% trans "Ключевые слова" %}:</b>
+                {% if LANGUAGE_CODE == 'ru' %}
+                   {{ p.keywords }}
+                {% else %}
+                    {{p.keywords_en}}
+                {% endif %}
+            </p>
+        {% endif %}
+        {% if p.link %}<p><b>{% trans "Сайт проекта" %}:</b> <a href="{{ p.link }}">{{ p.link }}</a></p> {% endif %}
         <br>
-        <p>{{ p.abstract }}</p>
+        <p>
+            {% if LANGUAGE_CODE == 'ru' %}
+               {{ p.abstract }}
+            {% else %}
+                {{p.abstract_en}}
+            {% endif %}
+        </p>
         {% if request.user.is_authenticated %}
          {% if p.file %}
-            <a href="{{ p.file.file.url }}"> {{ p.file}}</a>
+            <a href="{{ p.file.file.url }}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ p.file}}</a>
             {% endif %}
         {% endif %}
 

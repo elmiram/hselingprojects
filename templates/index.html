@@ -1,42 +1,45 @@
 {% extends '_base_basic.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 
 {% block body %}
  <div class="rate-container">
  <div class="col-sm-3">
         <div class="row">
-            <h3 class="text-center">Фильтры</h3>
+            <h3 class="text-center">{% trans "Фильтры" %}</h3>
             <form method="get" role="form" id="filter_form">
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="author" hidden>Авторы</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Автор" value="{{ author }}">
+                    <label for="author" hidden>{% trans "Авторы" %}</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="{% trans "Автор" %}" value="{{ author }}">
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="prof" hidden>Руководители</label>
-                    <input type="text" class="form-control" id="prof" name="prof" placeholder="Руководитель" value="{{ prof }}">
+                    <label for="prof" hidden>{% trans "Руководители" %}</label>
+                    <input type="text" class="form-control" id="prof" name="prof" placeholder="{% trans "Руководитель" %}" value="{{ prof }}">
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="keywords" hidden>Ключевые слова</label>
-                    <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Ключевые слова" value="{{ keywords }}">
+                    <label for="keywords" hidden>{% trans "Ключевые слова" %}</label>
+                    <input type="text" class="form-control" id="keywords" name="keywords" placeholder="{% trans "Ключевые слова" %}" value="{{ keywords }}">
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="title" hidden>Название</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Слова в названии" value="{{ title }}">
+                    <label for="title" hidden>{% trans "Название" %}</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="{% trans "Слова в названии" %}" value="{{ title }}">
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="abstract" hidden>Аннотация</label>
-                    <input type="text" class="form-control" id="abstract" name="abstract" placeholder="Слова в аннотации" value="{{ annot }}">
+                    <label for="abstract" hidden>{% trans "Аннотация" %}</label>
+                    <input type="text" class="form-control" id="abstract" name="abstract" placeholder="{% trans "Слова в аннотации" %}" value="{{ annot }}">
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
                     <div class="input-group">
-                      <div class="input-group-addon">С</div>
+                      <div class="input-group-addon">{% trans "С" %}</div>
                       <input type="number" class="form-control" id="year1" name="year1" placeholder="2010" value="{{ year1 }}">
-                      <div class="input-group-addon">по</div>
+                      <div class="input-group-addon">{% trans "по" %}</div>
                         <input type="number" class="form-control" id="year2" name="year2" placeholder="2017" value="{{ year2 }}">
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label for="field">Разделы:</label>
+                    <label for="field">{% trans "Разделы" %}:</label>
                         <select multiple="multiple" id="field" name="field" class="chosen-select"  multiple >
                                 {% for field in fields%}
                                     <option value="{{ field.id }}" {% if field.id in selected_fields%}selected{% endif %}>{{ field }} </option>
@@ -45,7 +48,7 @@
                 </div>
 
                 <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label>Тип работы:</label>
+                    <label>{% trans "Тип работы" %}:</label>
                     {% for t in project_types%}
                         <div class="checkbox indexpage">
                             <label>
@@ -57,8 +60,8 @@
                 </div>
 
                 <div class="row text-center">
-                    <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">Обновить</button>
-                    <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">Сбросить</a>
+                    <button id="projects_filter" type="submit" class="btn btn-primary btn-sm">{% trans "Обновить" %}</button>
+                    <a href="{% url 'index' %}" id="projects_filter" class="btn btn-primary btn-sm">{% trans "Сбросить" %}</a>
                 </div>
 
 
@@ -70,47 +73,78 @@
             <table  class="table table-responsive">
             <thead>
                 <tr>
-                    <th>Название</th>
-                    <th>Авторы</th>
-                    <th>Руководители</th>
-                    <th>Год</th>
-                    <th>Курс</th>
-{#                    <th>Ключевые слова</th>#}
-                    <th>Раздел</th>
-                    <th>Тип</th>
-                    <th>Оценка</th>
+                    <th>{% trans "Название" %}</th>
+                    <th>{% trans "Авторы" %}</th>
+                    <th>{% trans "Руководители" %}</th>
+                    <th>{% trans "Год" %}</th>
+                    <th>{% trans "Курс" %}</th>
+{#                    <th>{% trans "Ключевые слова" %}</th>#}
+                    <th>{% trans "Раздел" %}</th>
+                    <th>{% trans "Тип" %}</th>
+                    <th>{% trans "Оценка" %}</th>
                     {% if request.user.is_staff %}
                         <th></th>
                     {% endif %}
                 </tr>
             </thead>
             <tbody>
-			{% for f in projects %}
+            {% for p in  projects %}
                 <tr>
-                    <td><a href="{% url 'project' f.id%}">{{ f.title }}</a></td>
-                    <td>{{ f.author.all|join:", " }}</td>
-                    <td>{{ f.prof.all|join:", " }}</td>
-                    <td>{{ f.year }}</td>
-                    <td class="fit">{{ f.course_verbose }}</td>
-{#                    <td>{{ f.keywords }}</td>#}
-                    <td>{{ f.field.all|join:", " }}</td>
-                    <td>{{ f.project_type}}</td>
+                    <td>
+                        {% if LANGUAGE_CODE == 'ru' %}
+                           {{ p.title }}
+                        {% else %}
+                            {{p.title_en}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for a in p.author.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{a.a_second_name}} {{a.a_first_name}} {{a.a_fathers_name}}
+                            {% else %}
+                                {{a.a_first_name_en}} {{a.a_second_name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for t in p.prof.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{t.t_second_name}} {{t.t_first_name}} {{t.t_fathers_name}}
+                            {% else %}
+                                {{t.t_first_name_en}} {{t.t_second_name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ p.year }}</td>
+                    <td class="fit">{% trans p.course_verbose %}</td>
+                    <td>
+                        {% for f in p.field.all %}
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{ f.name }}
+                            {% else %}
+                                {{ f.name_en}}
+                            {% endif %}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{% trans p.project_type %}</td>
                     {% if request.user.is_staff or request.user.profile.is_teacher %}
-                        <td>{% if f.mark %}{{ f.mark}}{% endif %}</td>
+                        <td>{% if p.mark %}{{ p.mark}}{% endif %}</td>
                     {% else %}
                         <td>
-                        {% if f.mark %}
-                            {% if f.mark >= 8 %}<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        {% if p.mark %}
+                            {% if p.mark >= 8 %}<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                             {% else %}<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                             {% endif %}
                         {% endif %}
                         </td>
                     {% endif %}
                     {% if request.user.is_staff %}
-                        <td><a href="{% url 'edit' f.id%}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                        <td><a href="{% url 'edit' p.id%}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                     {% endif %}
                 </tr>
-
             {% endfor %}
             </tbody>
             </table>

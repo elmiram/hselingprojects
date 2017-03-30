@@ -8,7 +8,7 @@ from projects.models import UserProfile, DictFile, Author, Teacher, Field, Proje
 
 import os
 from django.utils.html import escape
-
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 
 

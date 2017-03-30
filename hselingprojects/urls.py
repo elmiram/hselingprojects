@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
 from django.contrib.auth.views import login, logout
@@ -21,13 +22,17 @@ from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
 
-from projects.views.pages import index, about, help, project
+from projects.views.pages import index, about, help, project, set_lang
 from projects.views.profile import profile, register_user
 from projects.views.profile import newAuthor, newField, newTeacher
 from projects.views.profile import edit_project, model_form_upload
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^set_lang$', set_lang, name='set_lang'),
+    ]
+
+urlpatterns += i18n_patterns(
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^help/', help, name='help'),
@@ -44,7 +49,8 @@ urlpatterns = [
     url(r'^add/author/?$', newAuthor, name="new_author"),
     url(r'^add/prof/?$', newTeacher, name="new_teacher"),
     url(r'^add/field/?$', newField, name="new_field"),
-    ]
-
+    prefix_default_language=False
+)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(r'media/', document_root=settings.MEDIA_ROOT)
+urlpatterns += url(r'^i18n/', include('django.conf.urls.i18n')),

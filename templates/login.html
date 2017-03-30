@@ -1,5 +1,7 @@
 {% extends '_base_basic.html' %}
 {% load static %}
+{% load i18n %}
+
 
 {% block headers %}
 	{{ block.super }}
@@ -11,21 +13,21 @@
     <div class="col-sm-offset-2 col-sm-8">
 
 
-		<h3 class="text-center">Вход для зарегистрированных пользователей</h3>
+		<h3 class="text-center">{% trans "Вход для зарегистрированных пользователей" %}</h3>
 
-		<div class="text-danger invalid_login">{% if form.errors %}Неверное имя пользователя или пароль{% endif %}</div>
+		<div class="text-danger invalid_login">{% if form.errors %}{% trans "Неверное имя пользователя или пароль" %}{% endif %}</div>
 
 		<form method="post" action="{% url 'login' %}" class="login_form" role="form">
 			{% csrf_token %}
 			<input type="hidden" name="next" value="{{ next }}">
 
 			<div class="form-group">
-				<input type="text" name="username" class="form-control" placeholder="Имя пользователя" required autofocus>
-				<input type="password" name="password" class="form-control" placeholder="Пароль" required>
+				<input type="text" name="username" class="form-control" placeholder="{% trans "Имя пользователя" %}" required autofocus>
+				<input type="password" name="password" class="form-control" placeholder="{% trans "Пароль" %}" required>
 			</div>
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-    		<a class="btn btn-sm btn-info btn-block" href="{% url "password_reset_recover" %}">Забыли пароль?</a>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">{% trans "Войти" %}</button>
+    		<a class="btn btn-sm btn-info btn-block" href="{% url "password_reset_recover" %}">{% trans "Забыли пароль?" %}</a>
 		</form>
     </div>
 	</div>

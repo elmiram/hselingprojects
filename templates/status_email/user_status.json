@@ -1,0 +1,14 @@
+{
+  "en": {
+    "approved": "Hello, {},\n\nYour account on website \"School of Linguistics Projects\" is approved. Now you can upload new projects and view the files, attached to projects.\n\nBest,\nTeam of \"School of Linguistics Projects\"",
+    "declined": "Hello, {},\n\nYour account on website \"School of Linguistics Projects\" was declined. Our staff members could not find confirmation that you are a student or a teacher at School of Linguistics. If you think there might be a mistake, please, contact one of our staff members as suggested on the website Help page.\n\nBest,\nTeam of \"School of Linguistics Projects\"",
+    "approved_subject": "Account approved - School of Linguistics Projects",
+    "declined_subject": "Account declined - School of Linguistics Projects"
+  },
+  "ru": {
+    "approved": "Здравствуйте, {}!\n\nВаш аккаунт на сайте \"Проекты Школы Лингвистики\" подтвержден. Теперь вы можете загружать проекты и просматривать файлы работ.\n\nКоманда сайта \"Проекты Школы Лингвистики\"",
+    "declined": "Здравствуйте, {}!\n\nВаш аккаунт на сайте \"Проекты Школы Лингвистики\" не подтвержден. Модератор сайта не смог установить, что вы действительно являетесь студентом или сотрудником Школы Лингвистики.\n\nЕсли вы считаете, что это произошло по ошибке, пожалуйста, свяжитесь с модераторами сайта по адресам, указанным в разделе \"Помощь\".\n\nКоманда сайта \"Проекты Школы Лингвистики\"",
+    "approved_subject": "Аккаунт подтвержден - Проекты Школы Лингвистики",
+    "declined_subject": "Аккаунт не подтвержден - Проекты Школы Лингвистики"
+  }
+}

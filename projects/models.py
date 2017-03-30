@@ -3,8 +3,10 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language
 from django.core.mail import send_mail
 import os
+import json
 
 
 def user_directory_path(instance, filename):
@@ -33,19 +35,22 @@ class UserProfile(models.Model):
         return '{0} {1} ({2})'.format(self.user.first_name, self.user.last_name, self.user.username)
 
     def save(self, *args, **kwargs):
+        # todo сейчас письмо всегда будет отправлять на русском. нужно добавить язык пользователя в модель.
+        with open(os.path.join(settings.BASE_DIR, 'templates', 'status_email', 'user_status.json'), encoding='utf-8') as f:
+            email_content = json.loads(f.read())
+        status_email = email_content[get_language()]
         if self.id:
             old = UserProfile.objects.get(pk=self.id)
             if not old.is_approved == self.is_approved and self.is_approved:
-                subject = 'Аккаунт подтвержден - Проекты Школы Лингвистики'
-                mesagge = 'Здравствуйте, {}!\n\nВаш аккаунт на сайте "Проекты Школы Лингвистики" подтвержден. Теперь вы можете загружать проекты и просматривать файлы работ.\n\nКоманда сайта "Проекты Школы Лингвистики"'.format(self.user.first_name)
+                subject = status_email['approved_subject']
+                message = status_email['approved'].format(self.user.first_name)
                 from_email = settings.EMAIL_HOST_USER
-                send_mail(subject, mesagge, from_email, [self.user.email], fail_silently=False)
+                send_mail(subject, message, from_email, [self.user.email], fail_silently=False)
             if not old.is_declined == self.is_declined and self.is_declined:
-                subject = 'Аккаунт не подтвержден - Проекты Школы Лингвистики'
-                mesagge = 'Здравствуйте, {}!\n\nВаш аккаунт на сайте "Проекты Школы Лингвистики" не подтвержден. Модератор сайта не смог установить, что вы действительно являетесь студентом или сотрудником Школы Лингвистики.\n\nЕсли вы считаете, что это произошло по ошибке, пожалуйста, свяжитесь с модераторами сайта по адресам, указанным в разделе "Помощь".\n\nКоманда сайта "Проекты Школы Лингвистики"'.format(
-                    self.user.first_name)
+                subject = status_email['approved_subject']
+                message = status_email['approved'].format(self.user.first_name)
                 from_email = settings.EMAIL_HOST_USER
-                send_mail(subject, mesagge, from_email, [self.user.email], fail_silently=False)
+                send_mail(subject, message, from_email, [self.user.email], fail_silently=False)
         super(UserProfile, self).save()
 
 

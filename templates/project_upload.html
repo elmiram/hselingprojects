@@ -1,5 +1,7 @@
 {% extends '_base_basic.html' %}
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block headers %}
 	{{ block.super }}
@@ -10,8 +12,8 @@
 
     {% if not request.user.profile.is_approved %}
     <div id='not_approved'>
-      <p>Вы пока что не можете просматривать эту страницу, так как ваш аккаунт на сайте не подтверждён.</p>
-      <p>Как только кто-то из модераторов проверит, что вы являетесь сотрудником или студентом Школы Лингвистики, вам на почту будет отправлено уведомление о подтверждении, и вы сможете просматривать страницы.</p>
+      <p>{% trans "Вы пока что не можете просматривать эту страницу, так как ваш аккаунт на сайте не подтверждён." %}</p>
+      <p>{% trans "Как только кто-то из модераторов проверит, что вы являетесь сотрудником или студентом Школы Лингвистики, вам на почту будет отправлено уведомление о подтверждении, и вы сможете просматривать страницы." %}</p>
     </div>
     {% endif %}
         {% if request.user.profile.is_approved %}
@@ -19,14 +21,14 @@
 	<div class="rate-container">
     <div class="col-sm-12">
         <div class="row">
-           <h3 class="text-center">Добавление проекта</h3>
+           <h3 class="text-center">{% trans "Добавление проекта" %}</h3>
         {{ errors }}
 
             {% if show_form %}
                 {% if not valid %}
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    Форма не прошла валидацию.
+                    {% trans "Форма не прошла валидацию." %}
                     </div>
                     {% endif %}
 
@@ -37,12 +39,18 @@
                     <label for="id_user" hidden>User</label>
                     <input id="id_user" class="form-control hidden" name="user" value="{{ request.user.id }}" required hidden>
                     <div class="row form-group">
-                        <label for="id_author" class="col-sm-3 control-label">Авторы*</label>
+                        <label for="id_author" class="col-sm-3 control-label">{% trans "Авторы" %}*</label>
 				        <div class="col-sm-5">
                             {{ project_form.author.errors }}
                             <select multiple="multiple" id="id_author" name="author" class="chosen-select" required  >
                                 {% for author in authors %}
-                                    <option value="{{ author.id }}">{{ author }}</option>
+                                    <option value="{{ author.id }}">
+                                        {% if LANGUAGE_CODE == 'ru' %}
+                                            {{author.a_second_name}} {{author.a_first_name}} {{author.a_fathers_name}}
+                                        {% else %}
+                                            {{author.a_first_name_en}} {{author.a_second_name_en}}
+                                        {% endif %}
+                                    </option>
                                 {% endfor %}
                             </select>
                         <a href="{% url "new_author" %}" class="add-another" id="add_id_author" onclick="return showAddAnotherPopup(this);">
@@ -51,12 +59,18 @@
 				        </div>
 			        </div>
                     <div class="row form-group">
-                        <label for="id_prof" class="col-sm-3 control-label">Руководители*</label>
+                        <label for="id_prof" class="col-sm-3 control-label">{% trans "Руководители" %}*</label>
                         <div class="col-sm-5">
                         {{ project_form.prof.errors }}
                             <select multiple="multiple" id="id_prof" name="prof"  class="chosen-select" multiple required>
                                 {% for prof in teachers %}
-                                    <option value="{{ prof.id }}">{{ prof}}</option>
+                                    <option value="{{ prof.id }}">
+                                        {% if LANGUAGE_CODE == 'ru' %}
+                                            {{prof.t_second_name}} {{prof.t_first_name}} {{prof.t_fathers_name}}
+                                        {% else %}
+                                            {{prof.t_first_name_en}} {{prof.t_second_name_en}}
+                                        {% endif %}
+                                    </option>
                                 {% endfor %}
                             </select>
                             <a href="{% url "new_teacher" %}" class="add-another" id="add_id_prof" onclick="return showAddAnotherPopup(this);">
@@ -65,68 +79,74 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_year" class="col-sm-3 control-label" >Год*</label>
+                        <label for="id_year" class="col-sm-3 control-label" >{% trans "Год" %}*</label>
                         <div class="col-sm-8"><div class="col-sm-3">
                             {{ project_form.year.errors }}
                             <input id="id_year" name="year" type="number"  class="form-control"  required />
                         </div></div>
 			        </div>
                    <div class="row form-group">
-                        <label for="id_title" class="col-sm-3 control-label" >Название*</label>
-                        <label for="id_title_en" class="col-sm-3 control-label" hidden>Название</label>
+                        <label for="id_title" class="col-sm-3 control-label" >{% trans "Название" %}*</label>
+                        <label for="id_title_en" class="col-sm-3 control-label" hidden>{% trans "Название" %}</label>
                         <div class="col-sm-8">
                             <div class="col-sm-6 ">
                                 {{ project_form.title.errors }}
-                                <input  class="form-control" id="id_title" maxlength="200" name="title" type="text" placeholder="на русском" required />
+                                <input  class="form-control" id="id_title" maxlength="200" name="title" type="text" placeholder="{% trans "на русском" %}" required />
                             </div>
                             <div class="col-sm-6 ">
                                 {{ project_form.title_en.errors }}
-                                <input  class="form-control" id="id_title_en" maxlength="200" name="title_en" type="text" placeholder="на английском" required />
+                                <input  class="form-control" id="id_title_en" maxlength="200" name="title_en" type="text" placeholder="{% trans "на английском" %}" required />
                             </div>
                         </div>
                    </div>
                     <div class="row form-group">
-                        <label for="id_keywords" class="col-sm-3 control-label" >Ключевые слова</label>
-                        <label for="id_keywords_en" class="col-sm-3 control-label" hidden>Ключевые слова</label>
+                        <label for="id_keywords" class="col-sm-3 control-label" >{% trans "Ключевые слова" %}</label>
+                        <label for="id_keywords_en" class="col-sm-3 control-label" hidden>{% trans "Ключевые слова" %}</label>
                         <div class="col-sm-8">
                             <div class="col-sm-6 ">
                                 {{ project_form.keywords.errors }}
-                                <textarea  class="form-control"  cols="40" id="id_keywords" name="keywords" rows="2" placeholder="на русском"  ></textarea>
+                                <textarea  class="form-control"  cols="40" id="id_keywords" name="keywords" rows="2" placeholder="{% trans "на русском" %}"  ></textarea>
                             </div>
                             <div class="col-sm-6 ">
                                 {{ project_form.keywords_en.errors }}
-                                <textarea  class="form-control"  cols="40" id="id_keywords_en" name="keywords_en" rows="2" placeholder="на английском"  ></textarea>
+                                <textarea  class="form-control"  cols="40" id="id_keywords_en" name="keywords_en" rows="2" placeholder="{% trans "на английском" %}"  ></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_abstract" class="col-sm-3 control-label" >Аннотация</label>
-                        <label for="id_abstract_en" class="col-sm-3 control-label" hidden>Аннотация</label>
+                        <label for="id_abstract" class="col-sm-3 control-label" >{% trans "Аннотация" %}</label>
+                        <label for="id_abstract_en" class="col-sm-3 control-label" hidden>{% trans "Аннотация" %}</label>
                         <div class="col-sm-8">
                             <div class="col-sm-6 ">
                                 {{ project_form.abstract.errors }}
-                                <textarea  class="form-control"  cols="40" id="id_abstract" name="abstract" rows="6" placeholder="на русском"  ></textarea>
+                                <textarea  class="form-control"  cols="40" id="id_abstract" name="abstract" rows="6" placeholder="{% trans "на русском" %}"  ></textarea>
                             </div>
                             <div class="col-sm-6 ">
                                 {{ project_form.abstract_en.errors }}
-                                <textarea  class="form-control"  cols="40" id="id_abstract_en" name="abstract_en" rows="6" placeholder="на английском"  ></textarea>
+                                <textarea  class="form-control"  cols="40" id="id_abstract_en" name="abstract_en" rows="6" placeholder="{% trans "на английском" %}"  ></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_link" class="col-sm-3 control-label" >Ссылка</label>
+                        <label for="id_link" class="col-sm-3 control-label" >{% trans "Ссылка" %}</label>
                         <div class="col-sm-5">
                             {{ project_form.link.errors }}
                             <input id="id_link"  class="form-control"  maxlength="1000" name="link" type="text" />
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_field" class="col-sm-3 control-label">Область лингвистики*</label>
+                        <label for="id_field" class="col-sm-3 control-label">{% trans "Раздел лингвистики" %}*</label>
                         <div class="col-sm-5">
                         {{ project_form.field.errors }}
                             <select multiple="multiple" id="id_field" name="field"  class="chosen-select" multiple required>
                                 {% for field in fields %}
-                                    <option value="{{ field.id }}">{{ field }}</option>
+                                    <option value="{{ field.id }}">
+                                        {% if LANGUAGE_CODE == 'ru' %}
+                                            {{ field.name }}
+                                        {% else %}
+                                            {{ field.name_en}}
+                                        {% endif %}
+                                    </option>
                                 {% endfor %}
                             </select>
                             <a href="{% url "new_field" %}" class="add-another" id="add_id_field" onclick="return showAddAnotherPopup(this);">
@@ -135,50 +155,50 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_lang" class="col-sm-3 control-label" >Язык работы*</label>
+                        <label for="id_lang" class="col-sm-3 control-label" >{% trans "Язык работы" %}*</label>
                         <div class="col-sm-5">
                         {{ project_form.lang.errors }}
                             <select id="id_lang"  class="form-control" name="lang" required>
                                 <option value="" selected="selected">---------</option>
                                 {% for l in langs %}
-                                    <option value="{{ l.0 }}">{{ l.1 }}</option>
+                                    <option value="{{ l.0 }}">{% trans l.1 %}</option>
                                 {% endfor %}
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_form" class="col-sm-3 control-label" >Тип работы*</label>
+                        <label for="id_form" class="col-sm-3 control-label" >{% trans "Тип работы" %}*</label>
                         <div class="col-sm-5">
                         {{ project_form.form.errors }}
                             <select id="id_form" name="form" class="form-control"  required>
                                 <option value="" selected="selected">---------</option>
                                  {% for p in project_types %}
-                                     <option value="{{ p.0 }}">{{ p.1 }}</option>
+                                     <option value="{{ p.0 }}">{% trans p.1 %}</option>
                                  {% endfor %}
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="id_course" class="col-sm-3 control-label" >Курс*</label>
+                        <label for="id_course" class="col-sm-3 control-label" >{% trans "Курс" %}*</label>
 				        <div class="col-sm-5">
                         {{ project_form.course.errors }}
 					        <select id="id_course"  class="form-control" name="course" required>
                                 <option value="" selected="selected">---------</option>
                                  {% for c in courses %}
-                                    <option value="{{ c.0 }}">{{ c.1 }}</option>
+                                    <option value="{{ c.0 }}">{% trans c.1 %}</option>
                                  {% endfor %}
                             </select>
 				        </div>
 			        </div>
                     <div class="row form-group">
-                        <label for="id_mark" class="col-sm-3 control-label" >Оценка</label>
+                        <label for="id_mark" class="col-sm-3 control-label" >{% trans "Оценка" %}</label>
                         <div class="col-sm-8"><div class="col-sm-3">
                             {{ project_form.mark.errors }}
                             <input id="id_mark" name="mark" type="number"  class="form-control"/>
                         </div></div>
 			        </div>
                     <div class="row form-group">
-                        <label for="id_file" class="col-sm-3 control-label">Файл работы</label>
+                        <label for="id_file" class="col-sm-3 control-label">{% trans "Файл работы" %}</label>
                         <div class="col-sm-5">
                             {{ file_form.file.errors }}
                             <input id="id_file"  type="file" class="form-control" name="file">
@@ -186,7 +206,7 @@
                     </div>
 
                     <span class="input-group-btn text-center">
-                        <button type="submit" class="btn btn-success">Загрузить</button>
+                        <button type="submit" class="btn btn-success">{% trans "Загрузить" %}</button>
                     </span>
                 </form>
             {% endif %}
@@ -195,15 +215,15 @@
                 {% if valid %}
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        Форма прошла валидацию.
+                        {% trans "Форма прошла валидацию." %}
                     </div>
                 {% endif %}
 
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    Проект сохранен!
+                    {% trans "Проект сохранен!" %}
                 </div>
-                <p><a href="{% url 'upload'%}" class="btn btn-info">Загрузить новый проект</a></p>
+                <p><a href="{% url 'upload'%}" class="btn btn-info">{% trans "Загрузить новый проект" %}</a></p>
           {% endif %}
 
         <br><br>

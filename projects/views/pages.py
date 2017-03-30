@@ -7,8 +7,18 @@ project() - collects project from database by id and renders it to project.html
 about() and help() - render about.html and help.html
 """
 
+from django import http
 from django.shortcuts import render
+from django.urls import translate_url
 from projects.models import *
+from django.utils.translation import ugettext_lazy as _
+from django.utils.http import is_safe_url, urlunquote
+from django.utils.translation import (
+    LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale,
+)
+
+
+LANGUAGE_QUERY_PARAMETER = 'lang'
 
 
 def index(request):
@@ -63,3 +73,40 @@ def project(request, id):
 
 def help(request):
     return render(request, 'help.html')
+
+
+def set_lang(request):
+    """
+    Redirect to a given url while setting the chosen language in the
+    session or cookie. The url and the language code need to be
+    specified in the request parameters.
+
+    Since this view changes how the user will see the rest of the site, it must
+    only be accessed as a POST request. If called as a GET request, it will
+    redirect to the page in the request (the 'next' parameter) without changing
+    any state.
+    """
+    next = request.GET.get('next')
+    if (next or not request.is_ajax()) and not is_safe_url(url=next, host=request.get_host()):
+        next = request.META.get('HTTP_REFERER')
+        if next:
+            next = urlunquote(next)  # HTTP_REFERER may be encoded.
+        if not is_safe_url(url=next, host=request.get_host()):
+            next = '/'
+    response = http.HttpResponseRedirect(next) if next else http.HttpResponse(status=204)
+    lang_code = request.GET.get(LANGUAGE_QUERY_PARAMETER)
+    if lang_code and check_for_language(lang_code):
+        if next:
+            next_trans = translate_url(next, lang_code)
+            if next_trans != next:
+                response = http.HttpResponseRedirect(next_trans)
+        if hasattr(request, 'session'):
+            request.session[LANGUAGE_SESSION_KEY] = lang_code
+        else:
+            response.set_cookie(
+                settings.LANGUAGE_COOKIE_NAME, lang_code,
+                max_age=settings.LANGUAGE_COOKIE_AGE,
+                path=settings.LANGUAGE_COOKIE_PATH,
+                domain=settings.LANGUAGE_COOKIE_DOMAIN,
+            )
+    return response

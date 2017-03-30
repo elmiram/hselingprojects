@@ -1,5 +1,7 @@
 {% extends '_base_basic.html' %}
 {% load static %}
+{% load i18n %}
+
 
 {% block headers %}
 	{{ block.super }}
@@ -9,7 +11,7 @@
 {% block body %}
 	<div class="rate-container">
 
-		<h3 class="text-center">Регистрация нового пользователя</h3>
+		<h3 class="text-center">{% trans "Регистрация нового пользователя" %}</h3>
         {% if error %}
 			<div class="text-danger invalid_login">{{ error }}</div>
 		{% endif %}
@@ -21,56 +23,56 @@
 			{% csrf_token %}
 
 			<div class="row form-group">
-				<label for="username" class="col-sm-4 control-label">Логин*</label>
+				<label for="username" class="col-sm-4 control-label">{% trans "Логин" %}*</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="username" name="username" placeholder="Логин" required autofocus>
+					<input type="text" class="form-control" id="username" name="username" placeholder="{% trans "Логин" %}" required autofocus>
 				</div>
 			</div>
 
 			<div class="row form-group">
-				<label for="first_name" class="col-sm-4 control-label">Фамилия*, имя*, отчество</label>
+				<label for="first_name" class="col-sm-4 control-label">{% trans "Фамилия" %}*, {% trans "имя" %}*, {% trans "отчество" %}</label>
 				<div class="col-sm-5 ">
                     <div class="col-sm-4 left_column">
-						<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия" required>
+						<input type="text" class="form-control" id="last_name" name="last_name" placeholder="{% trans "Фамилия" %}" required>
 					</div>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="first_name" name="first_name" placeholder="Имя" required>
+						<input type="text" class="form-control" id="first_name" name="first_name" placeholder="{% trans "Имя" %}" required>
 					</div>
 
                     <div class="col-sm-4 right_column">
-						<input type="text" class="form-control" id="fathers_name" name="fathers_name" placeholder="Отчество">
+						<input type="text" class="form-control" id="fathers_name" name="fathers_name" placeholder="{% trans "Отчество" %}">
 					</div>
 				</div>
 			</div>
 
 
 			<div class="row form-group">
-				<label for="email" class="col-sm-4 control-label">Почта*</label>
+				<label for="email" class="col-sm-4 control-label">{% trans "Почта" %}*</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="email" name="email" placeholder="Почта" required>
+					<input type="text" class="form-control" id="email" name="email" placeholder="{% trans "Почта" %}" required>
 				</div>
 			</div>
 			<div class="row form-group">
-				<label for="password" class="col-sm-4 control-label">Пароль*</label>
+				<label for="password" class="col-sm-4 control-label">{% trans "Пароль" %}*</label>
 				<div class="col-sm-5">
 					<div class="col-sm-6 ">
-						<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+						<input type="password" class="form-control" id="password" name="password" placeholder="{% trans "Пароль" %}" required>
 					</div>
 					<div class="col-sm-6 ">
-						<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Подтверждение пароля" required>
+						<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="{% trans "Подтверждение пароля" %}" required>
 					</div>
 				</div>
 			</div>
             <div class="row form-group">
 				<div class="col-sm-12">
-					<label for="is_teacher" class="col-sm-4 form-check-label  control-label">Преподаватель Школы Лингвистики</label>
+					<label for="is_teacher" class="col-sm-4 form-check-label  control-label">{% trans "Преподаватель Школы Лингвистики" %}</label>
                     <input type="checkbox" class="form-check-input col-sm-1 " id="is_teacher" name="is_teacher">
-                    <label for="is_student" class="col-sm-4 form-check-label  control-label">Студент Школы Лингвистики</label>
+                    <label for="is_student" class="col-sm-4 form-check-label  control-label">{% trans "Студент Школы Лингвистики" %}</label>
                     <input type="checkbox" class="form-check-input  control-label col-sm-1 " id="is_student" name="is_student">
 				</div>
 			</div>
 			<div class="row text-center">
-				<button type="submit" class="btn btn-success">Зарегистрироваться</button>
+				<button type="submit" class="btn btn-success">{% trans "Зарегистрироваться" %}</button>
 			</div>
 		</form>
 	</div>

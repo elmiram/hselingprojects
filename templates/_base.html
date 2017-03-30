@@ -1,6 +1,10 @@
 {% load static %}
+{% load i18n %}
+{% load tags %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,6 +44,43 @@
           .container .text-muted {  margin: 20px 0;  }
           .indexpage {  margin-bottom: 7px;  }
           .table td.fit {white-space: nowrap;width: 1%;  }
+          nav button{  margin-top:6px  }
+          @media (max-width: 991px) {
+              .navbar-header {
+                  float: none;
+              }
+              .navbar-left,.navbar-right {
+                  float: none !important;
+              }
+              .navbar-toggle {
+                  display: block;
+              }
+              .navbar-collapse {
+                  border-top: 1px solid transparent;
+                  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+              }
+              .navbar-fixed-top {
+                  top: 0;
+                  border-width: 0 0 1px;
+              }
+              .navbar-collapse.collapse {
+                  display: none!important;
+              }
+              .navbar-nav {
+                  float: none!important;
+                  margin-top: 7.5px;
+              }
+              .navbar-nav>li {
+                  float: none;
+              }
+              .navbar-nav>li>a {
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+              }
+              .collapse.in{
+                  display:block !important;
+              }
+            }
       </style>
   </head>
 
@@ -54,25 +95,36 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'index'%}">Проекты Школы Лингвистики</a>
+          <a class="navbar-brand" href="{% url 'index'%}">{% trans "Проекты Школы Лингвистики" %}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'index'%}">Поиск</a></li>
-            <li><a href="{% url 'about'%}">О сайте</a></li>
-{#              <li><a href="{% url 'help'%}">Помощь</a></li>#}
+            <li><a href="{% url 'index'%}">{% trans "Поиск" %}</a></li>
+            <li><a href="{% url 'about'%}">{% trans "О сайте" %}</a></li>
+            <li><a href="{% url 'help'%}">{% trans "Помощь" %}</a> </li>
           </ul>
             <ul class="nav navbar-nav  pull-right">
+                <li>
+                    <div class="btn-group navbar-form" role="group">
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <button onclick="location.href='{% url "set_lang" %}?next={% lang_link request.path language.code%}&lang={{ language.code }}'" type="button" class="btn btn-xs btn-default {% if language.code == LANGUAGE_CODE %}active{% endif %}">
+                                {{ language.code | upper }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                </li>
                {% if request.user.is_authenticated %}
                 <li>
                     <a href="{% url 'profile' request.user.username %}">{{ request.user.first_name }} {{ request.user.last_name }}</a>
                 </li>
                 <li>
-                    <a href="{% url 'logout' %}?next={% url 'index' %}">Выйти</a>
+                    <a href="{% url 'logout' %}?next={% url 'index' %}">{% trans "Выйти" %}</a>
                 </li>
               {% else %}
-                <li><a href="{% url 'login' %}?next={{ request.path }}">Войти</a></li>
-                <li><a href="{% url 'register' %}?next={{ request.path }}">Зарегистрироваться</a></li>
+                <li><a href="{% url 'login' %}?next={{ request.path }}">{% trans "Войти" %}</a></li>
+                <li><a href="{% url 'register' %}?next={{ request.path }}">{% trans "Зарегистрироваться" %}</a></li>
               {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
@@ -90,8 +142,16 @@
     <footer class="footer navbar-fixed-bottom navbar-default">
       <div class="container">
           <div class="row">
-        <div class="text-muted"><span class="pull-left"><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> Школа Лингвистики НИУ ВШЭ {% now "Y" %} </span><span class="pull-right">Разработчики: Эля Мустакимова и Лиза Кузьменко</span> </div>
-</div>
+            <div class="text-muted">
+                <span class="pull-left">
+                    <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+                    {% trans "Школа Лингвистики НИУ ВШЭ" %} {% now "Y" %}
+                </span>
+                <span class="pull-right">
+                    {% trans "Разработчики" %}: {% trans "Эля Мустакимова" %} {% trans "и" %} {% trans "Лиза Кузьменко" %}
+                </span>
+            </div>
+          </div>
       </div>
     </footer>
 

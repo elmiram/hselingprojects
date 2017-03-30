@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import json
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,6 +124,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('en', _('English')),
+)
+
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
+
 TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
@@ -145,4 +157,9 @@ else:
     STATIC_URL = '/projects/static/'
 
 MEDIA_ROOT = os.path.join(BUILDOUT_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+if PROD:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+else:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static/'),
+    )
