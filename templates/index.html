@@ -97,11 +97,13 @@
             {% for p in  projects %}
                 <tr>
                     <td>
-                        {% if LANGUAGE_CODE == 'ru' %}
-                           {{ p.title }}
-                        {% else %}
-                            {{p.title_en}}
-                        {% endif %}
+                        <a href="{% url 'project' p.id %}">
+                            {% if LANGUAGE_CODE == 'ru' %}
+                               {{ p.title }}
+                            {% else %}
+                                {{p.title_en}}
+                            {% endif %}
+                        </a>
                     </td>
                     <td>
                         {% for a in p.author.all %}
