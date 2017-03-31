@@ -149,7 +149,7 @@ def edit_project(request, p_id):
     langs = Project.langChoices
     project_types = Project.formChoices
     courses = Project.courseChoices
-    users = User.objects.all()
+    users = User.objects.filter(profile__is_approved=True)
     p = Project.objects.get(pk=p_id)
     if request.method == 'POST':
         pr = ProjectForm(request.POST, request.FILES)
