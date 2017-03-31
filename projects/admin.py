@@ -42,14 +42,16 @@ class AuthorAdmin(admin.ModelAdmin):
     def name(self, i):
         return '{} {} {}'.format(i.a_second_name, i.a_first_name, i.a_fathers_name).strip()
     name.short_description = _("Имя на русском")
+    name.admin_order_field = 'a_second_name'
 
     def english_name(self, i):
         return '{} {}'.format(i.a_first_name_en, i.a_second_name_en).strip()
     english_name.short_description = _("Имя на английском")
+    english_name.admin_order_field = 'a_second_name_en'
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    search_fields = ('t_second_name', 't_first_name', 'at_first_name_en', 't_second_name_en')
+    search_fields = ('t_second_name', 't_first_name', 't_first_name_en', 't_second_name_en')
     list_display = ('name', 'english_name')
     fieldsets = (
         (_('Имя на русском'), {'fields': [('t_second_name', 't_first_name', 't_fathers_name')]}),
@@ -64,10 +66,12 @@ class TeacherAdmin(admin.ModelAdmin):
     def name(self, i):
         return '{} {} {}'.format(i.t_second_name, i.t_first_name, i.t_fathers_name).strip()
     name.short_description = _("Имя на русском")
+    name.admin_order_field = 't_second_name'
 
     def english_name(self, i):
         return '{} {}'.format(i.t_first_name_en, i.t_second_name_en).strip()
     english_name.short_description = _("Имя на английском")
+    english_name.admin_order_field = 't_second_name_en'
 
 
 class UserProfileInline(admin.TabularInline):
