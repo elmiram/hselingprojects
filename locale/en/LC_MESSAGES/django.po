@@ -30,10 +30,8 @@ msgid "Проекты Школы Лингвистики"
 msgstr "School of Linguistics Projects"
 
 #: .\projects\admin.py:12
-#, fuzzy
-#| msgid "Проекты Школы Лингвистики"
 msgid "Проекты Школы Лингвистики - Управление"
-msgstr "School of Linguistics Projects"
+msgstr "School of Linguistics Projects - Administration"
 
 #: .\projects\admin.py:13
 msgid "Управление проектами"
@@ -41,174 +39,170 @@ msgstr ""
 
 #: .\projects\admin.py:34 .\projects\admin.py:44 .\projects\admin.py:55
 #: .\projects\admin.py:66
-#, fuzzy
-#| msgid "русский"
 msgid "Имя на русском"
-msgstr "Russian"
+msgstr "Name in Russian"
 
 #: .\projects\admin.py:35 .\projects\admin.py:48 .\projects\admin.py:56
 #: .\projects\admin.py:70
-#, fuzzy
-#| msgid "английский"
 msgid "Имя на английском"
-msgstr "English"
+msgstr "Name in English"
 
 #: .\projects\admin.py:80
 msgid "статус"
-msgstr ""
+msgstr "status"
 
 #: .\projects\admin.py:84 .\projects\models.py:41
 msgid "подтвержден"
-msgstr ""
+msgstr "approved"
 
 #: .\projects\admin.py:84 .\projects\models.py:42
 msgid "отклонен"
-msgstr ""
+msgstr "declined"
 
 #: .\projects\admin.py:84
 msgid "требует подтверждения"
-msgstr ""
+msgstr "pending"
 
 #: .\projects\admin.py:102
 msgid "Подтвердить выделенных пользователей"
-msgstr ""
+msgstr "Approve selected users"
 
 #: .\projects\admin.py:110
 msgid "Отклонить выделенных пользователей"
-msgstr ""
+msgstr "Decline selected users"
 
 #: .\projects\admin.py:123
 msgid "Студент"
-msgstr ""
+msgstr "Student"
 
 #: .\projects\admin.py:128
 msgid "Преподаватель"
-msgstr ""
+msgstr "Faculty"
 
 #: .\projects\admin.py:134
 msgid "Модератор"
-msgstr ""
+msgstr "Moderator"
 
 #: .\projects\admin.py:139
 msgid "Подтвержден"
-msgstr ""
+msgstr "Approved"
 
 #: .\projects\admin.py:143 .\templates\profile\register.html:43
 msgid "Отчество"
-msgstr ""
+msgstr "Fathers name"
 
 #: .\projects\admin.py:148
 msgid "Основная информация"
-msgstr ""
+msgstr "Main info"
 
 #: .\projects\admin.py:149
 msgid "Права доступа"
-msgstr ""
+msgstr "Permissions"
 
 #: .\projects\models.py:24 .\projects\models.py:37
 msgid "пользователь"
-msgstr ""
+msgstr "user"
 
 #: .\projects\models.py:25 .\projects\models.py:32 .\projects\models.py:170
 msgid "файл"
-msgstr ""
+msgstr "file"
 
 #: .\projects\models.py:26
 msgid "загружен"
-msgstr ""
+msgstr "uploaded"
 
 #: .\projects\models.py:33
 msgid "файлы"
-msgstr ""
+msgstr "files"
 
 #: .\projects\models.py:38 .\projects\models.py:87 .\projects\models.py:108
 #: .\templates\profile\register.html:33
 msgid "отчество"
-msgstr ""
+msgstr "fathers name"
 
 #: .\projects\models.py:39
 msgid "является преподавателем"
-msgstr ""
+msgstr "is faculty"
 
 #: .\projects\models.py:40
 msgid "является студентом"
-msgstr ""
+msgstr "is student"
 
 #: .\projects\models.py:78
 msgid "профиль"
-msgstr ""
+msgstr "profile"
 
 #: .\projects\models.py:79
 msgid "профили"
-msgstr ""
+msgstr "profiles"
 
 #: .\projects\models.py:83 .\projects\models.py:104
 msgid "имя на русском"
-msgstr ""
+msgstr "name in Russian"
 
 #: .\projects\models.py:84 .\projects\models.py:105
 msgid "фамилия на русском"
-msgstr ""
+msgstr "last name in Russian"
 
 #: .\projects\models.py:85 .\projects\models.py:106
 msgid "имя на английском"
-msgstr ""
+msgstr "name in English"
 
 #: .\projects\models.py:86 .\projects\models.py:107
 msgid "фамилия на английском"
-msgstr ""
+msgstr "last name in English"
 
 #: .\projects\models.py:88
 msgid "год поступления"
-msgstr ""
+msgstr "admission year"
 
 #: .\projects\models.py:89 .\projects\models.py:112
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: .\projects\models.py:99
 msgid "автор"
-msgstr ""
+msgstr "author"
 
 #: .\projects\models.py:100 .\projects\models.py:159
 msgid "авторы"
-msgstr ""
+msgstr "authors"
 
 #: .\projects\models.py:109
 msgid "департамент"
-msgstr ""
+msgstr "department"
 
 #: .\projects\models.py:110
 msgid "должность"
-msgstr ""
+msgstr "position"
 
 #: .\projects\models.py:111
 msgid "степень"
-msgstr ""
+msgstr "degree"
 
 #: .\projects\models.py:122
 msgid "руководитель"
-msgstr ""
+msgstr "supervisor"
 
 #: .\projects\models.py:123 .\projects\models.py:160
 msgid "руководители"
-msgstr ""
+msgstr "supervisors"
 
 #: .\projects\models.py:127
 msgid "сфера на русском"
-msgstr ""
+msgstr "field in Russian"
 
 #: .\projects\models.py:128
 msgid "сфера на английском"
-msgstr ""
+msgstr "field in English"
 
 #: .\projects\models.py:134
 msgid "раздел"
-msgstr ""
+msgstr "field"
 
 #: .\projects\models.py:135
 msgid "разделы"
-msgstr ""
+msgstr "fields"
 
 #: .\projects\models.py:139
 msgid "ВКР"
@@ -268,65 +262,63 @@ msgstr "2m"
 
 #: .\projects\models.py:155
 msgid "межкурсовой"
-msgstr ""
+msgstr "various"
 
 #: .\projects\models.py:161
 msgid "год"
-msgstr ""
+msgstr "year"
 
 #: .\projects\models.py:162
 msgid "название на русском"
-msgstr ""
+msgstr "title in Russian"
 
 #: .\projects\models.py:163
 msgid "название на английском"
-msgstr ""
+msgstr "title in English"
 
 #: .\projects\models.py:164
 msgid "ключевые слова на русском"
-msgstr ""
+msgstr "keywords in Russian"
 
 #: .\projects\models.py:165
 msgid "ключевые слова на английском"
-msgstr ""
+msgstr "keywords in English"
 
 #: .\projects\models.py:166
 msgid "аннотация на русском"
-msgstr ""
+msgstr "abstract in Russian"
 
 #: .\projects\models.py:167
 msgid "аннотация на английском"
-msgstr ""
+msgstr "abstract in English"
 
 #: .\projects\models.py:168
 msgid "оценка"
-msgstr ""
+msgstr "mark"
 
 #: .\projects\models.py:171
 msgid "ссылка"
-msgstr ""
+msgstr "link"
 
 #: .\projects\models.py:172
 msgid "сфера"
-msgstr ""
+msgstr "field"
 
 #: .\projects\models.py:173
 msgid "язык работы"
-msgstr ""
+msgstr "language"
 
 #: .\projects\models.py:174
 msgid "тип работы"
-msgstr ""
+msgstr "type of project"
 
 #: .\projects\models.py:175
 msgid "курс"
-msgstr ""
+msgstr "course"
 
 #: .\projects\models.py:200
-#, fuzzy
-#| msgid "проект"
 msgid "проекты"
-msgstr "project"
+msgstr "projects"
 
 #: .\templates\_base.html:104
 msgid "Поиск"
@@ -342,7 +334,7 @@ msgstr "Help"
 
 #: .\templates\_base.html:125
 msgid "Управление"
-msgstr ""
+msgstr "Admin"
 
 #: .\templates\_base.html:128
 msgid "Выйти"
@@ -394,7 +386,7 @@ msgstr ""
 
 #: .\templates\admin\auth\user\tabular.html:8
 msgid "Необязательные поля"
-msgstr ""
+msgstr "Extra fields"
 
 #: .\templates\admin\auth\user\tabular.html:20
 msgid "Delete?"
@@ -415,7 +407,7 @@ msgstr ""
 #: .\templates\profile\project_upload.html:90 .\templates\project.html:12
 #: .\templates\teacher.html:20
 msgid "Название"
-msgstr ""
+msgstr "Title"
 
 #: .\templates\author.html:21 .\templates\index.html:13
 #: .\templates\index.html:89 .\templates\profile\edit.html:46
@@ -423,7 +415,7 @@ msgstr ""
 #: .\templates\profile\project_upload.html:42 .\templates\project.html:13
 #: .\templates\teacher.html:21
 msgid "Авторы"
-msgstr ""
+msgstr "Authors"
 
 #: .\templates\author.html:22 .\templates\index.html:17
 #: .\templates\index.html:90 .\templates\profile\edit.html:66
@@ -431,38 +423,38 @@ msgstr ""
 #: .\templates\profile\project_upload.html:62 .\templates\project.html:14
 #: .\templates\teacher.html:22
 msgid "Руководители"
-msgstr ""
+msgstr "Supervisors"
 
 #: .\templates\author.html:23 .\templates\index.html:91
 #: .\templates\profile\edit.html:86 .\templates\profile\profile.html:32
 #: .\templates\profile\project_upload.html:82 .\templates\project.html:15
 #: .\templates\teacher.html:23
 msgid "Год"
-msgstr ""
+msgstr "Year"
 
 #: .\templates\author.html:24 .\templates\index.html:92
 #: .\templates\profile\edit.html:186
 #: .\templates\profile\project_upload.html:182 .\templates\project.html:16
 #: .\templates\teacher.html:24
 msgid "Курс"
-msgstr ""
+msgstr "Course"
 
 #: .\templates\author.html:26 .\templates\index.html:94
 #: .\templates\project.html:17 .\templates\teacher.html:26
 msgid "Раздел"
-msgstr ""
+msgstr "Field"
 
 #: .\templates\author.html:27 .\templates\index.html:95
 #: .\templates\project.html:18 .\templates\teacher.html:27
 msgid "Тип"
-msgstr ""
+msgstr "Type"
 
 #: .\templates\author.html:28 .\templates\index.html:96
 #: .\templates\profile\edit.html:198
 #: .\templates\profile\project_upload.html:194 .\templates\project.html:19
 #: .\templates\teacher.html:28
 msgid "Оценка"
-msgstr ""
+msgstr "Mark"
 
 #: .\templates\help.html:8
 msgid "Как загрузить проект?"
@@ -479,66 +471,66 @@ msgstr ""
 
 #: .\templates\index.html:11
 msgid "Фильтры"
-msgstr ""
+msgstr "Filters"
 
 #: .\templates\index.html:14
 msgid "Автор"
-msgstr ""
+msgstr "Author"
 
 #: .\templates\index.html:18
 msgid "Руководитель"
-msgstr ""
+msgstr "Supervisor"
 
 #: .\templates\index.html:21 .\templates\index.html:22
 #: .\templates\profile\edit.html:107 .\templates\profile\edit.html:108
 #: .\templates\profile\project_upload.html:103
 #: .\templates\profile\project_upload.html:104 .\templates\project.html:86
 msgid "Ключевые слова"
-msgstr ""
+msgstr "Keywords"
 
 #: .\templates\index.html:26
 msgid "Слова в названии"
-msgstr ""
+msgstr "Words in title"
 
 #: .\templates\index.html:29 .\templates\profile\edit.html:121
 #: .\templates\profile\edit.html:122
 #: .\templates\profile\project_upload.html:117
 #: .\templates\profile\project_upload.html:118
 msgid "Аннотация"
-msgstr ""
+msgstr "Abstract"
 
 #: .\templates\index.html:30
 msgid "Слова в аннотации"
-msgstr ""
+msgstr "Words in abstract"
 
 #: .\templates\index.html:34
 msgid "С"
-msgstr ""
+msgstr "From"
 
 #: .\templates\index.html:36
 msgid "по"
-msgstr ""
+msgstr "to"
 
 #: .\templates\index.html:42
 msgid "Разделы"
-msgstr ""
+msgstr "Fields"
 
 #: .\templates\index.html:57 .\templates\profile\edit.html:174
 #: .\templates\profile\project_upload.html:170
 msgid "Тип работы"
-msgstr ""
+msgstr "Type of project"
 
 #: .\templates\index.html:71
 msgid "Смотреть только лучшие работы"
-msgstr ""
+msgstr "Only best projects"
 
 #: .\templates\index.html:77
 msgid "Обновить"
-msgstr ""
+msgstr "Update"
 
 #: .\templates\index.html:78
 msgid "Сбросить"
-msgstr ""
+msgstr "Clear"
 
 #: .\templates\login.html:16
 msgid "Вход для зарегистрированных пользователей"
@@ -550,16 +542,16 @@ msgstr ""
 
 #: .\templates\login.html:25
 msgid "Имя пользователя"
-msgstr ""
+msgstr "Username"
 
 #: .\templates\login.html:26 .\templates\profile\register.html:56
 #: .\templates\profile\register.html:59
 msgid "Пароль"
-msgstr ""
+msgstr "Password"
 
 #: .\templates\login.html:30
 msgid "Забыли пароль?"
-msgstr ""
+msgstr "Forgot password"
 
 #: .\templates\profile\edit.html:15 .\templates\profile\profile.html:15
 #: .\templates\profile\project_upload.html:15
@@ -578,30 +570,30 @@ msgstr ""
 
 #: .\templates\profile\edit.html:25
 msgid "Редактирование проекта"
-msgstr ""
+msgstr "Edit project"
 
 #: .\templates\profile\edit.html:33 .\templates\profile\project_upload.html:31
 msgid "Форма не прошла валидацию."
-msgstr ""
+msgstr "Form is not valid"
 
 #: .\templates\profile\edit.html:98 .\templates\profile\edit.html:112
 #: .\templates\profile\edit.html:126 .\templates\profile\project_upload.html:94
 #: .\templates\profile\project_upload.html:108
 #: .\templates\profile\project_upload.html:122
 msgid "на русском"
-msgstr ""
+msgstr "in russian"
 
 #: .\templates\profile\edit.html:102 .\templates\profile\edit.html:116
 #: .\templates\profile\edit.html:130 .\templates\profile\project_upload.html:98
 #: .\templates\profile\project_upload.html:112
 #: .\templates\profile\project_upload.html:126
 msgid "на английском"
-msgstr ""
+msgstr "in English"
 
 #: .\templates\profile\edit.html:135
 #: .\templates\profile\project_upload.html:131
 msgid "Ссылка"
-msgstr ""
+msgstr "Link"
 
 #: .\templates\profile\edit.html:142
 #: .\templates\profile\project_upload.html:138
@@ -611,12 +603,12 @@ msgstr "Field"
 #: .\templates\profile\edit.html:162
 #: .\templates\profile\project_upload.html:158
 msgid "Язык работы"
-msgstr ""
+msgstr "Language"
 
 #: .\templates\profile\edit.html:205
 #: .\templates\profile\project_upload.html:201
 msgid "Файл работы"
-msgstr ""
+msgstr "File"
 
 #: .\templates\profile\edit.html:210
 msgid "Если вы загрузите новый файл, текущий файл будет удален."
@@ -624,108 +616,108 @@ msgstr ""
 
 #: .\templates\profile\edit.html:217 .\templates\profile\popupform.html:26
 msgid "Сохранить"
-msgstr ""
+msgstr "Save changes"
 
 #: .\templates\profile\edit.html:218
 msgid "Отменить изменения"
-msgstr ""
+msgstr "Discard changes"
 
 #: .\templates\profile\edit.html:227
 #: .\templates\profile\project_upload.html:218
 msgid "Форма прошла валидацию."
-msgstr ""
+msgstr "Form is valid."
 
 #: .\templates\profile\edit.html:233
 #: .\templates\profile\project_upload.html:224
 msgid "Проект сохранен!"
-msgstr ""
+msgstr "Project saved!"
 
 #: .\templates\profile\edit.html:235 .\templates\profile\profile.html:88
 #: .\templates\profile\profile.html:95
 #: .\templates\profile\project_upload.html:226
 msgid "Загрузить новый проект"
-msgstr ""
+msgstr "Add new project"
 
 #: .\templates\profile\popupform.html:7
 msgid "Добавление нового элемента:"
-msgstr ""
+msgstr "Add new element"
 
 #: .\templates\profile\popupform.html:27
 msgid "Закрыть"
-msgstr ""
+msgstr "Close"
 
 #: .\templates\profile\profile.html:24
 msgid "Вы добавили эти проекты:"
-msgstr ""
+msgstr "You added these projects:"
 
 #: .\templates\profile\profile.html:33
 msgid "Файл"
-msgstr ""
+msgstr "File"
 
 #: .\templates\profile\profile.html:34
 msgid "Добавлен"
-msgstr ""
+msgstr "Date"
 
 #: .\templates\profile\profile.html:80
 msgid "Что сделать с выбранными проектами?"
-msgstr ""
+msgstr "What do you want to do with selected projects?"
 
 #: .\templates\profile\profile.html:82
 msgid "удалить"
-msgstr ""
+msgstr "delete"
 
 #: .\templates\profile\profile.html:87
 msgid "Выполнить"
-msgstr ""
+msgstr "Go"
 
 #: .\templates\profile\profile.html:93
 msgid "Вы еще не добавили ни один проект."
-msgstr ""
+msgstr "You have no projects yet."
 
 #: .\templates\profile\project_upload.html:24
 msgid "Добавление проекта"
-msgstr ""
+msgstr "Add project"
 
 #: .\templates\profile\project_upload.html:209
 msgid "Загрузить"
-msgstr ""
+msgstr "Upload"
 
 #: .\templates\profile\register.html:14
 msgid "Регистрация нового пользователя"
-msgstr ""
+msgstr "New user"
 
 #: .\templates\profile\register.html:26 .\templates\profile\register.html:28
 msgid "Логин"
-msgstr ""
+msgstr "Username"
 
 #: .\templates\profile\register.html:33 .\templates\profile\register.html:36
 msgid "Фамилия"
-msgstr ""
+msgstr "Last name"
 
 #: .\templates\profile\register.html:33
 msgid "имя"
-msgstr ""
+msgstr "name"
 
 #: .\templates\profile\register.html:39
 msgid "Имя"
-msgstr ""
+msgstr "Name"
 
 #: .\templates\profile\register.html:50 .\templates\profile\register.html:52
 msgid "Почта"
-msgstr ""
+msgstr "Email"
 
 #: .\templates\profile\register.html:62
 msgid "Подтверждение пароля"
-msgstr ""
+msgstr "Confirm password"
 
 #: .\templates\profile\register.html:68
 msgid "Преподаватель Школы Лингвистики"
-msgstr ""
+msgstr "Faculty member at School of Linguistics"
 
 #: .\templates\profile\register.html:70
 msgid "Студент Школы Лингвистики"
-msgstr ""
+msgstr "Student at School of Linguistics"
 
 #: .\templates\project.html:94
 msgid "Сайт проекта"
-msgstr ""
+msgstr "Project website"

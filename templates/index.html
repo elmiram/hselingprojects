@@ -52,10 +52,28 @@
                                 {% endfor %}
                             </select>
                 </div>
-
-                <div class="form-group col-sm-12  form-group-sm indexpage">
-                    <label>{% trans "Тип работы" %}:</label>
-                    {% for t in project_types%}
+                <div>
+                    <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+                        <label class="panel-title">
+                            <a href="#collapseListGroup1" role="button" data-toggle="collapse"aria-controls="collapseListGroup1"
+                                {% if selected_types %}
+                                    class  aria-expanded="true"
+                               {% else %}
+                                    class="collapsed"  aria-expanded="false"
+                               {% endif %}
+                            >
+                                {% trans "Тип работы" %} <span class="caret"></span>
+                            </a>
+                        </label>
+                    </div>
+                    <div role="tabpanel" id="collapseListGroup1" aria-labelledby="collapseListGroupHeading1"
+                            {% if selected_types %}
+                                    aria-expanded="true" class="panel-collapse collapse col-sm-12 in"
+                            {% else %}
+                                    aria-expanded="false" class="panel-collapse collapse col-sm-12"
+                            {% endif %}
+                    >
+                        {% for t in project_types%}
                         <div class="checkbox indexpage">
                             <label>
                                 <input type="checkbox" name="project_type" class="check" value="{{ t.0 }}" {% if t.0 in selected_types %}checked{% endif %}>
@@ -63,6 +81,38 @@
                             </label>
                         </div>
                     {% endfor %}
+                    </div>
+                </div>
+                <div>
+                    <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+                        <label class="panel-title">
+                            <a href="#collapseListGroup2" role="button" data-toggle="collapse" aria-controls="collapseListGroup1"
+                               {% if selected_course %}
+                                    class  aria-expanded="true"
+                               {% else %}
+                                    class="collapsed"  aria-expanded="false"
+                               {% endif %}
+                            >
+                                {% trans "Курс" %} <span class="caret"></span>
+                            </a>
+                        </label>
+                    </div>
+                    <div role="tabpanel" id="collapseListGroup2" aria-labelledby="collapseListGroupHeading2"
+                            {% if selected_course %}
+                                    aria-expanded="true" class="panel-collapse collapse col-sm-12 in"
+                               {% else %}
+                                    aria-expanded="false" class="panel-collapse collapse col-sm-12"
+                               {% endif %}
+                    >
+                        {% for t in courses%}
+                        <div class="checkbox indexpage">
+                            <label>
+                                <input type="checkbox" name="course" class="check" value="{{ t.0 }}" {% if t.0 in selected_course %}checked{% endif %}>
+                                {{ t.1 }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </div>
                 </div>
                 <div class="form-group col-sm-12  form-group-sm indexpage">
                     <div class="checkbox indexpage">

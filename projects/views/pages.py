@@ -25,6 +25,7 @@ def index(request):
     projects = Project.objects.all()
     fields = Field.objects.all()
     project_types = Project.formChoices
+    courses = Project.courseChoices
     q = request.GET
     if q:
         author = q['author']
@@ -35,6 +36,7 @@ def index(request):
         year1, year2 = q['year1'], q['year2']
         selected_fields = q.getlist('field')
         selected_types = q.getlist('project_type')
+        selected_course = q.getlist('course')
         if author:
             projects = projects.filter(author__a_second_name__contains=author.capitalize())
         if title:
@@ -57,6 +59,9 @@ def index(request):
             projects = projects.filter(field__in=selected_fields)
         if selected_types:
             projects = projects.filter(form__in=selected_types)
+        if selected_course:
+            selected_course = [int(i) for i in selected_course]
+            projects = projects.filter(course__in=selected_course)
         if 'best_only' in q:
             projects = projects.filter(mark__gte=8)
         selected_fields = [int(i) for i in selected_fields]
