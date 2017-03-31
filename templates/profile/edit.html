@@ -40,8 +40,24 @@
                     {% csrf_token %}
                 <label for="id_proj" hidden></label>
                     <input id="id_proj" class="form-control hidden" name="id_proj" value="{{ p.id }}" required hidden>
-                    <label for="id_user" hidden>User</label>
-                    <input id="id_user" class="form-control hidden" name="user" value="{{ p.user.id }}" required hidden>
+                    {% if user.is_staff %}
+                        <div class="row form-group">
+                            <label for="id_user" class="col-sm-3 control-label">{% trans "Пользователь" %}*</label>
+                            <div class="col-sm-5">
+                                {{ project_form.user.errors }}
+                                <select id="id_user" name="user" class="chosen-select" required  >
+                                    {% for user in users %}
+                                        <option value="{{ user.id }}" {% if user.id == p.user.id%}selected{% endif %}>
+                                            {{user.last_name}} {{user.first_name}} ({{user.username}})
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    {% else %}
+                        <label for="id_user" hidden>User</label>
+                        <input id="id_user" class="form-control hidden" name="user" value="{{ p.user.id }}" required hidden>
+                    {% endif %}
                     <div class="row form-group">
                         <label for="id_author" class="col-sm-3 control-label">{% trans "Авторы" %}*</label>
 				        <div class="col-sm-5">
