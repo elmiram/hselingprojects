@@ -186,7 +186,8 @@
            placeholder_text_multiple: " ",
            width: "92%",
            search_contains: true,
-           no_results_text: {% trans "Не найдено совпадений с " %}});
+           no_results_text: "{% trans "Не найдено совпадений с " %}"
+       });
        $(".chosen-select").on('chosen:showing_dropdown', function(evt, params) {
             $('.chosen-select').trigger('chosen:updated');
             });
