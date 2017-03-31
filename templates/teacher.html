@@ -5,6 +5,13 @@
 
 {% block body %}
  <div class="rate-container">
+  <h2>
+        {% if LANGUAGE_CODE == 'ru' %}
+            {{prof.t_second_name}} {{prof.t_first_name}} {{prof.t_fathers_name}}
+        {% else %}
+            {{prof.t_first_name_en}} {{prof.t_second_name_en}}
+        {% endif %}
+  </h2>
  <div class="col-sm-12">
         <div class="row">
             <table  class="table table-responsive">

@@ -74,13 +74,15 @@ def project(request, id):
 
 
 def author_view(request, id):
-    projects = Project.objects.filter(author=id)
-    return render(request, 'project_list.html', locals())
+    author = Author.objects.get(pk=id)
+    projects = Project.objects.filter(author=author)
+    return render(request, 'author.html', locals())
 
 
 def teacher_view(request, id):
-    projects = Project.objects.filter(prof=id)
-    return render(request, 'project_list.html', locals())
+    prof = Teacher.objects.get(pk=id)
+    projects = Project.objects.filter(prof=prof)
+    return render(request, 'teacher.html', locals())
 
 
 def help(request):

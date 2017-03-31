@@ -41,7 +41,7 @@ def handlePopAdd(request, addForm, field):
         (escape(newObject._get_pk_val()), escape(newObject)))
     else:
         form = addForm()
-    return render(request, "popupform.html", locals())
+    return render(request, "profile/popupform.html", locals())
 
 
 def register_callback(user):
@@ -61,7 +61,7 @@ def profile(request, username):
             for i in values:
                Project.objects.get(pk=int(i)).delete()
     pr = Project.objects.filter(user=request.user)
-    return render(request, 'profile.html', {'files': pr})
+    return render(request, 'profile/profile.html', {'files': pr})
 
 
 def register_user(request):
@@ -77,7 +77,7 @@ def register_user(request):
 
             if User.objects.filter(username=username):
                 error = 'Пользователь с таким логином уже существует'
-                return render(request, 'register.html', locals())
+                return render(request, 'profile/register.html', locals())
 
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
@@ -96,11 +96,11 @@ def register_user(request):
 
             return redirect(request.GET.get('next', '/') or '/')
         errors = form.errors
-        return render(request, 'register.html', locals())
+        return render(request, 'profile/register.html', locals())
 
     form = UserCreationForm()
     next_page = request.GET.get('next', '/')
-    return render(request, 'register.html', locals())
+    return render(request, 'profile/register.html', locals())
 
 
 def model_form_upload(request):
@@ -128,18 +128,18 @@ def model_form_upload(request):
             p.save()
             show_form = False
             valid = True
-            return render(request, 'project_upload.html', locals())
+            return render(request, 'profile/project_upload.html', locals())
         else:
             errors = project_form.errors
             show_form = True
             valid = False
-            render(request, 'project_upload.html', locals())
+            render(request, 'profile/project_upload.html', locals())
     else:
         project_form = ProjectForm()
         file_form = DictFileForm()
         show_form = True
         valid = True
-    return render(request, 'project_upload.html', locals())
+    return render(request, 'profile/project_upload.html', locals())
 
 
 def edit_project(request, p_id):
@@ -176,7 +176,7 @@ def edit_project(request, p_id):
             p.save()
             show_form = False
             valid = True
-            return render(request, 'edit.html', locals())
+            return render(request, 'profile/edit.html', locals())
         else:
             errors = pr.errors
             show_form = True
@@ -184,7 +184,7 @@ def edit_project(request, p_id):
             field_set = set(p.field.values_list('id', flat=True))
             prof_set = set(p.prof.values_list('id', flat=True))
             author_set = set(p.author.values_list('id', flat=True))
-            render(request, 'edit.html', locals())
+            render(request, 'profile/edit.html', locals())
     else:
         p = Project.objects.get(pk=p_id)
         project_form = ProjectForm()
@@ -194,4 +194,4 @@ def edit_project(request, p_id):
         field_set = set(p.field.values_list('id', flat=True))
         prof_set = set(p.prof.values_list('id', flat=True))
         author_set = set(p.author.values_list('id', flat=True))
-    return render(request, 'edit.html', locals())
+    return render(request, 'profile/edit.html', locals())
