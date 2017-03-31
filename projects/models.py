@@ -28,6 +28,10 @@ class DictFile(models.Model):
     def __str__(self):
         return os.path.basename(self.file.name)
 
+    class Meta:
+        verbose_name = _('файл')
+        verbose_name_plural = _('файлы')
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', verbose_name=_('пользователь'))  # SET_NULL ?
@@ -70,6 +74,10 @@ class UserProfile(models.Model):
                 self.send_letter(declined=True)
         super(UserProfile, self).save()
 
+    class Meta:
+        verbose_name = _('профиль')
+        verbose_name_plural = _('профили')
+
 
 class Author(models.Model):
     a_first_name = models.CharField(max_length=20, verbose_name=_('имя на русском'))
@@ -86,6 +94,10 @@ class Author(models.Model):
     @property
     def full(self):
         return '{0} {1} {2}'.format(self.a_second_name, self.a_first_name, self.a_fathers_name).strip()
+
+    class Meta:
+        verbose_name = _('автор')
+        verbose_name_plural = _('авторы')
 
 
 class Teacher(models.Model):
@@ -106,6 +118,10 @@ class Teacher(models.Model):
     def full(self):
         return '{0} {1} {2}'.format(self.a_second_name, self.a_first_name, self.a_fathers_name).strip()
 
+    class Meta:
+        verbose_name = _('руководитель')
+        verbose_name_plural = _('руководители')
+
 
 class Field(models.Model):
     name = models.CharField(max_length=50, verbose_name=_('сфера на русском'))
@@ -113,6 +129,10 @@ class Field(models.Model):
 
     def __str__(self):
         return '{0}'.format(self.name)
+
+    class Meta:
+        verbose_name = _('раздел')
+        verbose_name_plural = _('разделы')
 
 
 class Project(models.Model):
@@ -174,3 +194,7 @@ class Project(models.Model):
     @property
     def course_verbose(self):
         return dict(self.courseChoices)[self.course]
+
+    class Meta:
+        verbose_name = _('проект')
+        verbose_name_plural = _('проекты')

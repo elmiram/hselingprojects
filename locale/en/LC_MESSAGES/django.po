@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-30 02:24+0300\n"
+"POT-Creation-Date: 2017-03-31 03:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,248 +25,354 @@ msgstr "русский"
 msgid "English"
 msgstr "английский"
 
-#: .\projects\models.py:18 .\projects\models.py:27
-msgid "пользователь"
-msgstr ""
-
-#: .\projects\models.py:19 .\projects\models.py:133
-msgid "файл"
-msgstr ""
-
-#: .\projects\models.py:20
-msgid "загружен"
-msgstr ""
-
-#: .\projects\models.py:28 .\projects\models.py:62 .\projects\models.py:79
-#: .\templates\register.html:33
-msgid "отчество"
-msgstr ""
-
-#: .\projects\models.py:29
-msgid "является преподавателем"
-msgstr ""
-
-#: .\projects\models.py:30
-msgid "является студентом"
-msgstr ""
-
-#: .\projects\models.py:31
-msgid "подтвержден"
-msgstr ""
-
-#: .\projects\models.py:32
-msgid "отклонен"
-msgstr ""
-
-#: .\projects\models.py:58 .\projects\models.py:75
-msgid "имя на русском"
-msgstr ""
-
-#: .\projects\models.py:59 .\projects\models.py:76
-msgid "фамилия на русском"
-msgstr ""
-
-#: .\projects\models.py:60 .\projects\models.py:77
-msgid "имя на английском"
-msgstr ""
-
-#: .\projects\models.py:61 .\projects\models.py:78
-msgid "фамилия на английском"
-msgstr ""
-
-#: .\projects\models.py:63
-msgid "год поступления"
-msgstr ""
-
-#: .\projects\models.py:64 .\projects\models.py:83
-msgid "email"
-msgstr ""
-
-#: .\projects\models.py:80
-msgid "департамент"
-msgstr ""
-
-#: .\projects\models.py:81
-msgid "должность"
-msgstr ""
-
-#: .\projects\models.py:82
-msgid "степень"
-msgstr ""
-
-#: .\projects\models.py:94
-msgid "сфера на русском"
-msgstr ""
-
-#: .\projects\models.py:95
-msgid "сфера на английском"
-msgstr ""
-
-#: .\projects\models.py:102
-msgid "ВКР"
-msgstr "thesis"
-
-#: .\projects\models.py:103
-msgid "мастерская"
-msgstr "workshop"
-
-#: .\projects\models.py:104
-msgid "курсовая работа"
-msgstr "term paper"
-
-#: .\projects\models.py:105
-msgid "проект"
-msgstr "project"
-
-#: .\projects\models.py:107
-msgid "русский"
-msgstr "Russian"
-
-#: .\projects\models.py:108
-msgid "английский"
-msgstr "English"
-
-#: .\projects\models.py:109
-msgid "французский"
-msgstr "French"
-
-#: .\projects\models.py:110
-msgid "немецкий"
-msgstr "German"
-
-#: .\projects\models.py:112
-msgid "1 бак"
-msgstr "1b"
-
-#: .\projects\models.py:113
-msgid "2 бак"
-msgstr "2b"
-
-#: .\projects\models.py:114
-msgid "3 бак"
-msgstr "3b"
-
-#: .\projects\models.py:115
-msgid "4 бак"
-msgstr "4b"
-
-#: .\projects\models.py:116
-msgid "1 маг"
-msgstr "1m"
-
-#: .\projects\models.py:117
-msgid "2 маг"
-msgstr "2m"
-
-#: .\projects\models.py:118
-msgid "межкурсовой"
-msgstr ""
-
-#: .\projects\models.py:122
-msgid "авторы"
-msgstr ""
-
-#: .\projects\models.py:123
-msgid "руководители"
-msgstr ""
-
-#: .\projects\models.py:124
-msgid "год"
-msgstr ""
-
-#: .\projects\models.py:125
-msgid "название на русском"
-msgstr ""
-
-#: .\projects\models.py:126
-msgid "название на английском"
-msgstr ""
-
-#: .\projects\models.py:127
-msgid "ключевые слова на русском"
-msgstr ""
-
-#: .\projects\models.py:128
-msgid "ключевые слова на английском"
-msgstr ""
-
-#: .\projects\models.py:129
-msgid "аннотация на русском"
-msgstr ""
-
-#: .\projects\models.py:130
-msgid "аннотация на английском"
-msgstr ""
-
-#: .\projects\models.py:131
-msgid "оценка"
-msgstr ""
-
-#: .\projects\models.py:134
-msgid "ссылка"
-msgstr ""
-
-#: .\projects\models.py:135
-msgid "сфера"
-msgstr ""
-
-#: .\projects\models.py:136
-msgid "язык работы"
-msgstr ""
-
-#: .\projects\models.py:137
-msgid "тип работы"
-msgstr ""
-
-#: .\projects\models.py:138
-msgid "курс"
-msgstr ""
-
-#: .\templates\_base.html:60
+#: .\projects\admin.py:11 .\templates\_base.html:100
 msgid "Проекты Школы Лингвистики"
 msgstr "School of Linguistics Projects"
 
-#: .\templates\_base.html:64
+#: .\projects\admin.py:12
+#, fuzzy
+#| msgid "Проекты Школы Лингвистики"
+msgid "Проекты Школы Лингвистики - Управление"
+msgstr "School of Linguistics Projects"
+
+#: .\projects\admin.py:13
+msgid "Управление проектами"
+msgstr ""
+
+#: .\projects\admin.py:34 .\projects\admin.py:44 .\projects\admin.py:55
+#: .\projects\admin.py:66
+#, fuzzy
+#| msgid "русский"
+msgid "Имя на русском"
+msgstr "Russian"
+
+#: .\projects\admin.py:35 .\projects\admin.py:48 .\projects\admin.py:56
+#: .\projects\admin.py:70
+#, fuzzy
+#| msgid "английский"
+msgid "Имя на английском"
+msgstr "English"
+
+#: .\projects\admin.py:80
+msgid "статус"
+msgstr ""
+
+#: .\projects\admin.py:84 .\projects\models.py:41
+msgid "подтвержден"
+msgstr ""
+
+#: .\projects\admin.py:84 .\projects\models.py:42
+msgid "отклонен"
+msgstr ""
+
+#: .\projects\admin.py:84
+msgid "требует подтверждения"
+msgstr ""
+
+#: .\projects\admin.py:102
+msgid "Подтвердить выделенных пользователей"
+msgstr ""
+
+#: .\projects\admin.py:110
+msgid "Отклонить выделенных пользователей"
+msgstr ""
+
+#: .\projects\admin.py:123
+msgid "Студент"
+msgstr ""
+
+#: .\projects\admin.py:128
+msgid "Преподаватель"
+msgstr ""
+
+#: .\projects\admin.py:134
+msgid "Модератор"
+msgstr ""
+
+#: .\projects\admin.py:139
+msgid "Подтвержден"
+msgstr ""
+
+#: .\projects\admin.py:143 .\templates\profile\register.html:43
+msgid "Отчество"
+msgstr ""
+
+#: .\projects\admin.py:148
+msgid "Основная информация"
+msgstr ""
+
+#: .\projects\admin.py:149
+msgid "Права доступа"
+msgstr ""
+
+#: .\projects\models.py:24 .\projects\models.py:37
+msgid "пользователь"
+msgstr ""
+
+#: .\projects\models.py:25 .\projects\models.py:32 .\projects\models.py:170
+msgid "файл"
+msgstr ""
+
+#: .\projects\models.py:26
+msgid "загружен"
+msgstr ""
+
+#: .\projects\models.py:33
+msgid "файлы"
+msgstr ""
+
+#: .\projects\models.py:38 .\projects\models.py:87 .\projects\models.py:108
+#: .\templates\profile\register.html:33
+msgid "отчество"
+msgstr ""
+
+#: .\projects\models.py:39
+msgid "является преподавателем"
+msgstr ""
+
+#: .\projects\models.py:40
+msgid "является студентом"
+msgstr ""
+
+#: .\projects\models.py:78
+msgid "профиль"
+msgstr ""
+
+#: .\projects\models.py:79
+msgid "профили"
+msgstr ""
+
+#: .\projects\models.py:83 .\projects\models.py:104
+msgid "имя на русском"
+msgstr ""
+
+#: .\projects\models.py:84 .\projects\models.py:105
+msgid "фамилия на русском"
+msgstr ""
+
+#: .\projects\models.py:85 .\projects\models.py:106
+msgid "имя на английском"
+msgstr ""
+
+#: .\projects\models.py:86 .\projects\models.py:107
+msgid "фамилия на английском"
+msgstr ""
+
+#: .\projects\models.py:88
+msgid "год поступления"
+msgstr ""
+
+#: .\projects\models.py:89 .\projects\models.py:112
+msgid "email"
+msgstr ""
+
+#: .\projects\models.py:99
+msgid "автор"
+msgstr ""
+
+#: .\projects\models.py:100 .\projects\models.py:159
+msgid "авторы"
+msgstr ""
+
+#: .\projects\models.py:109
+msgid "департамент"
+msgstr ""
+
+#: .\projects\models.py:110
+msgid "должность"
+msgstr ""
+
+#: .\projects\models.py:111
+msgid "степень"
+msgstr ""
+
+#: .\projects\models.py:122
+msgid "руководитель"
+msgstr ""
+
+#: .\projects\models.py:123 .\projects\models.py:160
+msgid "руководители"
+msgstr ""
+
+#: .\projects\models.py:127
+msgid "сфера на русском"
+msgstr ""
+
+#: .\projects\models.py:128
+msgid "сфера на английском"
+msgstr ""
+
+#: .\projects\models.py:134
+msgid "раздел"
+msgstr ""
+
+#: .\projects\models.py:135
+msgid "разделы"
+msgstr ""
+
+#: .\projects\models.py:139
+msgid "ВКР"
+msgstr "thesis"
+
+#: .\projects\models.py:140
+msgid "мастерская"
+msgstr "workshop"
+
+#: .\projects\models.py:141
+msgid "курсовая работа"
+msgstr "term paper"
+
+#: .\projects\models.py:142 .\projects\models.py:199
+msgid "проект"
+msgstr "project"
+
+#: .\projects\models.py:144
+msgid "русский"
+msgstr "Russian"
+
+#: .\projects\models.py:145
+msgid "английский"
+msgstr "English"
+
+#: .\projects\models.py:146
+msgid "французский"
+msgstr "French"
+
+#: .\projects\models.py:147
+msgid "немецкий"
+msgstr "German"
+
+#: .\projects\models.py:149
+msgid "1 бак"
+msgstr "1b"
+
+#: .\projects\models.py:150
+msgid "2 бак"
+msgstr "2b"
+
+#: .\projects\models.py:151
+msgid "3 бак"
+msgstr "3b"
+
+#: .\projects\models.py:152
+msgid "4 бак"
+msgstr "4b"
+
+#: .\projects\models.py:153
+msgid "1 маг"
+msgstr "1m"
+
+#: .\projects\models.py:154
+msgid "2 маг"
+msgstr "2m"
+
+#: .\projects\models.py:155
+msgid "межкурсовой"
+msgstr ""
+
+#: .\projects\models.py:161
+msgid "год"
+msgstr ""
+
+#: .\projects\models.py:162
+msgid "название на русском"
+msgstr ""
+
+#: .\projects\models.py:163
+msgid "название на английском"
+msgstr ""
+
+#: .\projects\models.py:164
+msgid "ключевые слова на русском"
+msgstr ""
+
+#: .\projects\models.py:165
+msgid "ключевые слова на английском"
+msgstr ""
+
+#: .\projects\models.py:166
+msgid "аннотация на русском"
+msgstr ""
+
+#: .\projects\models.py:167
+msgid "аннотация на английском"
+msgstr ""
+
+#: .\projects\models.py:168
+msgid "оценка"
+msgstr ""
+
+#: .\projects\models.py:171
+msgid "ссылка"
+msgstr ""
+
+#: .\projects\models.py:172
+msgid "сфера"
+msgstr ""
+
+#: .\projects\models.py:173
+msgid "язык работы"
+msgstr ""
+
+#: .\projects\models.py:174
+msgid "тип работы"
+msgstr ""
+
+#: .\projects\models.py:175
+msgid "курс"
+msgstr ""
+
+#: .\projects\models.py:200
+#, fuzzy
+#| msgid "проект"
+msgid "проекты"
+msgstr "project"
+
+#: .\templates\_base.html:104
 msgid "Поиск"
 msgstr "Search"
 
-#: .\templates\_base.html:65 .\templates\about.html:6
+#: .\templates\_base.html:105 .\templates\about.html:6
 msgid "О сайте"
 msgstr "About"
 
-#: .\templates\_base.html:66 .\templates\help.html:6
+#: .\templates\_base.html:106 .\templates\help.html:6
 msgid "Помощь"
 msgstr "Help"
 
-#: .\templates\_base.html:94
+#: .\templates\_base.html:125
+msgid "Управление"
+msgstr ""
+
+#: .\templates\_base.html:128
 msgid "Выйти"
 msgstr "Log out"
 
-#: .\templates\_base.html:97 .\templates\login.html:29
+#: .\templates\_base.html:131 .\templates\login.html:29
 msgid "Войти"
 msgstr "Log in"
 
-#: .\templates\_base.html:98 .\templates\register.html:75
+#: .\templates\_base.html:132 .\templates\profile\register.html:75
 msgid "Зарегистрироваться"
 msgstr "Register"
 
-#: .\templates\_base.html:119
+#: .\templates\_base.html:153
 msgid "Школа Лингвистики НИУ ВШЭ"
 msgstr "School of Linguistics NRU HSE"
 
-#: .\templates\_base.html:122
+#: .\templates\_base.html:156
 msgid "Разработчики"
 msgstr "Developers"
 
-#: .\templates\_base.html:122
+#: .\templates\_base.html:156
 msgid "Эля Мустакимова"
 msgstr "Elmira Mustakimova"
 
-#: .\templates\_base.html:122
+#: .\templates\_base.html:156
 msgid "и"
 msgstr "and"
 
-#: .\templates\_base.html:122
+#: .\templates\_base.html:156
 msgid "Лиза Кузьменко"
 msgstr "Elizaveta Kuzmenko"
 
@@ -286,132 +392,76 @@ msgstr ""
 msgid "Сейчас проект находится в разработке и вы смотрите beta-версию."
 msgstr ""
 
-#: .\templates\edit.html:15 .\templates\profile.html:15
-#: .\templates\project_upload.html:15
-msgid ""
-"Вы пока что не можете просматривать эту страницу, так как ваш аккаунт на "
-"сайте не подтверждён."
+#: .\templates\admin\auth\user\tabular.html:8
+msgid "Необязательные поля"
 msgstr ""
 
-#: .\templates\edit.html:16 .\templates\profile.html:16
-#: .\templates\project_upload.html:16
-msgid ""
-"Как только кто-то из модераторов проверит, что вы являетесь сотрудником или "
-"студентом Школы Лингвистики, вам на почту будет отправлено уведомление о "
-"подтверждении, и вы сможете просматривать страницы."
+#: .\templates\admin\auth\user\tabular.html:20
+msgid "Delete?"
 msgstr ""
 
-#: .\templates\edit.html:25
-msgid "Редактирование проекта"
+#: .\templates\admin\auth\user\tabular.html:34
+msgid "Change"
 msgstr ""
 
-#: .\templates\edit.html:33 .\templates\project_upload.html:31
-msgid "Форма не прошла валидацию."
+#: .\templates\admin\auth\user\tabular.html:36
+msgid "View on site"
 msgstr ""
 
-#: .\templates\edit.html:46 .\templates\index.html:12 .\templates\index.html:76
-#: .\templates\profile.html:30 .\templates\project.html:12
-#: .\templates\project_upload.html:42
-msgid "Авторы"
-msgstr ""
-
-#: .\templates\edit.html:60 .\templates\index.html:16 .\templates\index.html:77
-#: .\templates\profile.html:31 .\templates\project.html:13
-#: .\templates\project_upload.html:56
-msgid "Руководители"
-msgstr ""
-
-#: .\templates\edit.html:74 .\templates\index.html:78
-#: .\templates\profile.html:32 .\templates\project.html:14
-#: .\templates\project_upload.html:70
-msgid "Год"
-msgstr ""
-
-#: .\templates\edit.html:81 .\templates\edit.html:82 .\templates\index.html:24
-#: .\templates\index.html:75 .\templates\profile.html:29
-#: .\templates\project.html:11 .\templates\project_upload.html:77
-#: .\templates\project_upload.html:78
+#: .\templates\author.html:20 .\templates\index.html:25
+#: .\templates\index.html:88 .\templates\profile\edit.html:93
+#: .\templates\profile\edit.html:94 .\templates\profile\profile.html:29
+#: .\templates\profile\project_upload.html:89
+#: .\templates\profile\project_upload.html:90 .\templates\project.html:12
+#: .\templates\teacher.html:20
 msgid "Название"
 msgstr ""
 
-#: .\templates\edit.html:86 .\templates\edit.html:100 .\templates\edit.html:114
-#: .\templates\project_upload.html:82 .\templates\project_upload.html:96
-#: .\templates\project_upload.html:110
-msgid "на русском"
+#: .\templates\author.html:21 .\templates\index.html:13
+#: .\templates\index.html:89 .\templates\profile\edit.html:46
+#: .\templates\profile\profile.html:30
+#: .\templates\profile\project_upload.html:42 .\templates\project.html:13
+#: .\templates\teacher.html:21
+msgid "Авторы"
 msgstr ""
 
-#: .\templates\edit.html:90 .\templates\edit.html:104 .\templates\edit.html:118
-#: .\templates\project_upload.html:86 .\templates\project_upload.html:100
-#: .\templates\project_upload.html:114
-msgid "на английском"
+#: .\templates\author.html:22 .\templates\index.html:17
+#: .\templates\index.html:90 .\templates\profile\edit.html:66
+#: .\templates\profile\profile.html:31
+#: .\templates\profile\project_upload.html:62 .\templates\project.html:14
+#: .\templates\teacher.html:22
+msgid "Руководители"
 msgstr ""
 
-#: .\templates\edit.html:95 .\templates\edit.html:96 .\templates\index.html:20
-#: .\templates\index.html:21 .\templates\project.html:50
-#: .\templates\project_upload.html:91 .\templates\project_upload.html:92
-msgid "Ключевые слова"
+#: .\templates\author.html:23 .\templates\index.html:91
+#: .\templates\profile\edit.html:86 .\templates\profile\profile.html:32
+#: .\templates\profile\project_upload.html:82 .\templates\project.html:15
+#: .\templates\teacher.html:23
+msgid "Год"
 msgstr ""
 
-#: .\templates\edit.html:109 .\templates\edit.html:110
-#: .\templates\index.html:28 .\templates\project_upload.html:105
-#: .\templates\project_upload.html:106
-msgid "Аннотация"
-msgstr ""
-
-#: .\templates\edit.html:123 .\templates\project_upload.html:119
-msgid "Ссылка"
-msgstr ""
-
-#: .\templates\edit.html:130
-msgid "Раздел лингвистики"
-msgstr "Field"
-
-#: .\templates\edit.html:144 .\templates\project_upload.html:140
-msgid "Язык работы"
-msgstr ""
-
-#: .\templates\edit.html:156 .\templates\index.html:50
-#: .\templates\project_upload.html:152
-msgid "Тип работы"
-msgstr ""
-
-#: .\templates\edit.html:168 .\templates\index.html:79
-#: .\templates\project.html:15 .\templates\project_upload.html:164
+#: .\templates\author.html:24 .\templates\index.html:92
+#: .\templates\profile\edit.html:186
+#: .\templates\profile\project_upload.html:182 .\templates\project.html:16
+#: .\templates\teacher.html:24
 msgid "Курс"
 msgstr ""
 
-#: .\templates\edit.html:180 .\templates\index.html:83
-#: .\templates\project.html:18 .\templates\project_upload.html:176
+#: .\templates\author.html:26 .\templates\index.html:94
+#: .\templates\project.html:17 .\templates\teacher.html:26
+msgid "Раздел"
+msgstr ""
+
+#: .\templates\author.html:27 .\templates\index.html:95
+#: .\templates\project.html:18 .\templates\teacher.html:27
+msgid "Тип"
+msgstr ""
+
+#: .\templates\author.html:28 .\templates\index.html:96
+#: .\templates\profile\edit.html:198
+#: .\templates\profile\project_upload.html:194 .\templates\project.html:19
+#: .\templates\teacher.html:28
 msgid "Оценка"
-msgstr ""
-
-#: .\templates\edit.html:187 .\templates\project_upload.html:183
-msgid "Файл работы"
-msgstr ""
-
-#: .\templates\edit.html:192
-msgid "Если вы загрузите новый файл, текущий файл будет удален."
-msgstr ""
-
-#: .\templates\edit.html:199 .\templates\popupform.html:26
-msgid "Сохранить"
-msgstr ""
-
-#: .\templates\edit.html:200
-msgid "Отменить изменения"
-msgstr ""
-
-#: .\templates\edit.html:209 .\templates\project_upload.html:200
-msgid "Форма прошла валидацию."
-msgstr ""
-
-#: .\templates\edit.html:215 .\templates\project_upload.html:206
-msgid "Проект сохранен!"
-msgstr ""
-
-#: .\templates\edit.html:217 .\templates\profile.html:64
-#: .\templates\profile.html:71 .\templates\project_upload.html:208
-msgid "Загрузить новый проект"
 msgstr ""
 
 #: .\templates\help.html:8
@@ -427,52 +477,67 @@ msgid ""
 "настоящие имя и фамилию."
 msgstr ""
 
-#: .\templates\index.html:9
+#: .\templates\index.html:11
 msgid "Фильтры"
 msgstr ""
 
-#: .\templates\index.html:13
+#: .\templates\index.html:14
 msgid "Автор"
 msgstr ""
 
-#: .\templates\index.html:17
+#: .\templates\index.html:18
 msgid "Руководитель"
 msgstr ""
 
-#: .\templates\index.html:25
+#: .\templates\index.html:21 .\templates\index.html:22
+#: .\templates\profile\edit.html:107 .\templates\profile\edit.html:108
+#: .\templates\profile\project_upload.html:103
+#: .\templates\profile\project_upload.html:104 .\templates\project.html:86
+msgid "Ключевые слова"
+msgstr ""
+
+#: .\templates\index.html:26
 msgid "Слова в названии"
 msgstr ""
 
-#: .\templates\index.html:29
+#: .\templates\index.html:29 .\templates\profile\edit.html:121
+#: .\templates\profile\edit.html:122
+#: .\templates\profile\project_upload.html:117
+#: .\templates\profile\project_upload.html:118
+msgid "Аннотация"
+msgstr ""
+
+#: .\templates\index.html:30
 msgid "Слова в аннотации"
 msgstr ""
 
-#: .\templates\index.html:33
+#: .\templates\index.html:34
 msgid "С"
 msgstr ""
 
-#: .\templates\index.html:35
+#: .\templates\index.html:36
 msgid "по"
 msgstr ""
 
-#: .\templates\index.html:41
+#: .\templates\index.html:42
 msgid "Разделы"
 msgstr ""
 
-#: .\templates\index.html:62
+#: .\templates\index.html:57 .\templates\profile\edit.html:174
+#: .\templates\profile\project_upload.html:170
+msgid "Тип работы"
+msgstr ""
+
+#: .\templates\index.html:71
+msgid "Смотреть только лучшие работы"
+msgstr ""
+
+#: .\templates\index.html:77
 msgid "Обновить"
 msgstr ""
 
-#: .\templates\index.html:63
+#: .\templates\index.html:78
 msgid "Сбросить"
-msgstr ""
-
-#: .\templates\index.html:81 .\templates\project.html:16
-msgid "Раздел"
-msgstr ""
-
-#: .\templates\index.html:82 .\templates\project.html:17
-msgid "Тип"
 msgstr ""
 
 #: .\templates\login.html:16
@@ -487,8 +552,8 @@ msgstr ""
 msgid "Имя пользователя"
 msgstr ""
 
-#: .\templates\login.html:26 .\templates\register.html:56
-#: .\templates\register.html:59
+#: .\templates\login.html:26 .\templates\profile\register.html:56
+#: .\templates\profile\register.html:59
 msgid "Пароль"
 msgstr ""
 
@@ -496,94 +561,171 @@ msgstr ""
 msgid "Забыли пароль?"
 msgstr ""
 
-#: .\templates\popupform.html:7
+#: .\templates\profile\edit.html:15 .\templates\profile\profile.html:15
+#: .\templates\profile\project_upload.html:15
+msgid ""
+"Вы пока что не можете просматривать эту страницу, так как ваш аккаунт на "
+"сайте не подтверждён."
+msgstr ""
+
+#: .\templates\profile\edit.html:16 .\templates\profile\profile.html:16
+#: .\templates\profile\project_upload.html:16
+msgid ""
+"Как только кто-то из модераторов проверит, что вы являетесь сотрудником или "
+"студентом Школы Лингвистики, вам на почту будет отправлено уведомление о "
+"подтверждении, и вы сможете просматривать страницы."
+msgstr ""
+
+#: .\templates\profile\edit.html:25
+msgid "Редактирование проекта"
+msgstr ""
+
+#: .\templates\profile\edit.html:33 .\templates\profile\project_upload.html:31
+msgid "Форма не прошла валидацию."
+msgstr ""
+
+#: .\templates\profile\edit.html:98 .\templates\profile\edit.html:112
+#: .\templates\profile\edit.html:126 .\templates\profile\project_upload.html:94
+#: .\templates\profile\project_upload.html:108
+#: .\templates\profile\project_upload.html:122
+msgid "на русском"
+msgstr ""
+
+#: .\templates\profile\edit.html:102 .\templates\profile\edit.html:116
+#: .\templates\profile\edit.html:130 .\templates\profile\project_upload.html:98
+#: .\templates\profile\project_upload.html:112
+#: .\templates\profile\project_upload.html:126
+msgid "на английском"
+msgstr ""
+
+#: .\templates\profile\edit.html:135
+#: .\templates\profile\project_upload.html:131
+msgid "Ссылка"
+msgstr ""
+
+#: .\templates\profile\edit.html:142
+#: .\templates\profile\project_upload.html:138
+msgid "Раздел лингвистики"
+msgstr "Field"
+
+#: .\templates\profile\edit.html:162
+#: .\templates\profile\project_upload.html:158
+msgid "Язык работы"
+msgstr ""
+
+#: .\templates\profile\edit.html:205
+#: .\templates\profile\project_upload.html:201
+msgid "Файл работы"
+msgstr ""
+
+#: .\templates\profile\edit.html:210
+msgid "Если вы загрузите новый файл, текущий файл будет удален."
+msgstr ""
+
+#: .\templates\profile\edit.html:217 .\templates\profile\popupform.html:26
+msgid "Сохранить"
+msgstr ""
+
+#: .\templates\profile\edit.html:218
+msgid "Отменить изменения"
+msgstr ""
+
+#: .\templates\profile\edit.html:227
+#: .\templates\profile\project_upload.html:218
+msgid "Форма прошла валидацию."
+msgstr ""
+
+#: .\templates\profile\edit.html:233
+#: .\templates\profile\project_upload.html:224
+msgid "Проект сохранен!"
+msgstr ""
+
+#: .\templates\profile\edit.html:235 .\templates\profile\profile.html:88
+#: .\templates\profile\profile.html:95
+#: .\templates\profile\project_upload.html:226
+msgid "Загрузить новый проект"
+msgstr ""
+
+#: .\templates\profile\popupform.html:7
 msgid "Добавление нового элемента:"
 msgstr ""
 
-#: .\templates\popupform.html:27
+#: .\templates\profile\popupform.html:27
 msgid "Закрыть"
 msgstr ""
 
-#: .\templates\profile.html:24
+#: .\templates\profile\profile.html:24
 msgid "Вы добавили эти проекты:"
 msgstr ""
 
-#: .\templates\profile.html:33
+#: .\templates\profile\profile.html:33
 msgid "Файл"
 msgstr ""
 
-#: .\templates\profile.html:34
+#: .\templates\profile\profile.html:34
 msgid "Добавлен"
 msgstr ""
 
-#: .\templates\profile.html:56
+#: .\templates\profile\profile.html:80
 msgid "Что сделать с выбранными проектами?"
 msgstr ""
 
-#: .\templates\profile.html:58
+#: .\templates\profile\profile.html:82
 msgid "удалить"
 msgstr ""
 
-#: .\templates\profile.html:63
+#: .\templates\profile\profile.html:87
 msgid "Выполнить"
 msgstr ""
 
-#: .\templates\profile.html:69
+#: .\templates\profile\profile.html:93
 msgid "Вы еще не добавили ни один проект."
 msgstr ""
 
-#: .\templates\project.html:51
-msgid "Сайт проекта"
-msgstr ""
-
-#: .\templates\project_upload.html:24
+#: .\templates\profile\project_upload.html:24
 msgid "Добавление проекта"
 msgstr ""
 
-#: .\templates\project_upload.html:126
-msgid "Область лингвистики"
-msgstr ""
-
-#: .\templates\project_upload.html:191
+#: .\templates\profile\project_upload.html:209
 msgid "Загрузить"
 msgstr ""
 
-#: .\templates\register.html:14
+#: .\templates\profile\register.html:14
 msgid "Регистрация нового пользователя"
 msgstr ""
 
-#: .\templates\register.html:26 .\templates\register.html:28
+#: .\templates\profile\register.html:26 .\templates\profile\register.html:28
 msgid "Логин"
 msgstr ""
 
-#: .\templates\register.html:33 .\templates\register.html:36
+#: .\templates\profile\register.html:33 .\templates\profile\register.html:36
 msgid "Фамилия"
 msgstr ""
 
-#: .\templates\register.html:33
+#: .\templates\profile\register.html:33
 msgid "имя"
 msgstr ""
 
-#: .\templates\register.html:39
+#: .\templates\profile\register.html:39
 msgid "Имя"
 msgstr ""
 
-#: .\templates\register.html:43
-msgid "Отчество"
-msgstr ""
-
-#: .\templates\register.html:50 .\templates\register.html:52
+#: .\templates\profile\register.html:50 .\templates\profile\register.html:52
 msgid "Почта"
 msgstr ""
 
-#: .\templates\register.html:62
+#: .\templates\profile\register.html:62
 msgid "Подтверждение пароля"
 msgstr ""
 
-#: .\templates\register.html:68
+#: .\templates\profile\register.html:68
 msgid "Преподаватель Школы Лингвистики"
 msgstr ""
 
-#: .\templates\register.html:70
+#: .\templates\profile\register.html:70
 msgid "Студент Школы Лингвистики"
+msgstr ""
+
+#: .\templates\project.html:94
+msgid "Сайт проекта"
 msgstr ""
