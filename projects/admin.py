@@ -14,9 +14,12 @@ class ProjectsAdminSite(AdminSite):
 
 
 class ProjectAdmin(admin.ModelAdmin):
+    search_fields = ('title',)
     list_display = ('title', 'year', 'authors', 'course')  # в таблице
+    list_filter = ('year', 'course', 'form')
     fieldsets = (
         (None, {'fields': [('user', 'visible_to_all')]}),
+        (None, {'fields': [('prof')]})
     )
 
     def authors(self, instance):
