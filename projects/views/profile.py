@@ -173,7 +173,8 @@ def edit_project(request, p_id):
             p.course = request.POST['course']
             p.form = request.POST['form']
             p.lang = request.POST['lang']
-            p.mark = request.POST['mark']
+            if request.POST['mark']:
+                p.mark = request.POST['mark']
             p.save()
             show_form = False
             valid = True
