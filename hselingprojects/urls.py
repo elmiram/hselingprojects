@@ -22,13 +22,15 @@ from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
 
+from projects.admin import site_admin
+
 from projects.views.pages import index, about, help, project, author_view, teacher_view, set_lang
 from projects.views.profile import profile, register_user
 from projects.views.profile import newAuthor, newField, newTeacher
 from projects.views.profile import edit_project, model_form_upload
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', site_admin.urls),
     url(r'^set_lang$', set_lang, name='set_lang'),
     ]
 

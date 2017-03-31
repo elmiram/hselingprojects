@@ -9,6 +9,12 @@ import os
 import json
 
 
+def get_name(self):
+    name = '{1} {0}'.format(self.first_name, self.last_name)
+    return '{} ({})'.format(name, self.username)
+User.add_to_class("__str__", get_name)
+
+
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'user_{0}/{1}'.format(instance.user.id, filename)
@@ -34,27 +40,34 @@ class UserProfile(models.Model):
     def __str__(self):
         return '{0} {1} ({2})'.format(self.user.first_name, self.user.last_name, self.user.username)
 
-    def save(self, *args, **kwargs):
-        # todo сейчас письмо всегда будет отправлять на русском. нужно добавить язык пользователя в модель.
-        with open(os.path.join(settings.BASE_DIR, 'templates', 'status_email', 'user_status.json'), encoding='utf-8') as f:
+    def send_letter(self, approved=False, declined=False):
+        with open(os.path.join(settings.BASE_DIR, 'templates', 'status_email', 'user_status.json'),
+                  encoding='utf-8') as f:
             email_content = json.loads(f.read())
         status_email = email_content[get_language()]
+        subj, text = '', ''
+        if approved:
+            subj = 'approved_subject'
+            text = 'approved'
+        elif declined:
+            subj = 'declined_subject'
+            text = 'declined'
+        if subj and text:
+            subject = status_email[subj]
+            message = status_email[text].format(self.user.first_name)
+            from_email = settings.EMAIL_HOST_USER
+            msg = EmailMessage(subject, message, from_email, [self.user.email])
+            msg.content_subtype = "html"
+            msg.send()
+
+    def save(self, *args, **kwargs):
+        # todo сейчас письмо всегда будет отправлять на русском. нужно добавить язык пользователя в модель.
         if self.id:
             old = UserProfile.objects.get(pk=self.id)
             if not old.is_approved == self.is_approved and self.is_approved:
-                subject = status_email['approved_subject']
-                message = status_email['approved'].format(self.user.first_name)
-                from_email = settings.EMAIL_HOST_USER
-                msg = EmailMessage(subject, message, from_email, [self.user.email])
-                msg.content_subtype = "html"
-                msg.send()
+                self.send_letter(approved=True)
             if not old.is_declined == self.is_declined and self.is_declined:
-                subject = status_email['declined_subject']
-                message = status_email['declined'].format(self.user.first_name)
-                from_email = settings.EMAIL_HOST_USER
-                msg = EmailMessage(subject, message, from_email, [self.user.email])
-                msg.content_subtype = "html"
-                msg.send()
+                self.send_letter(declined=True)
         super(UserProfile, self).save()
 
 

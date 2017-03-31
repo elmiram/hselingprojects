@@ -121,6 +121,9 @@
                 <li>
                     <a href="{% url 'profile' request.user.username %}">{{ request.user.first_name }} {{ request.user.last_name }}</a>
                 </li>
+                   {% if request.user.is_staff %}
+                <li><a href="{% url 'admin:index'%}">{% trans "Управление" %}</a> </li>
+                   {% endif %}
                 <li>
                     <a href="{% url 'logout' %}?next={% url 'index' %}">{% trans "Выйти" %}</a>
                 </li>

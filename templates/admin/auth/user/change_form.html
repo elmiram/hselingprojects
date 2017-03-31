@@ -1,0 +1,20 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% load i18n admin_urls %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+    <style>
+    select[multiple] {  min-height: 50px;  }
+    .selector select {
+    width: 380px;
+    height: 70px;  }
+    </style>
+{% endblock %}
+
+{% block inline_field_sets %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include 'admin/auth/user/tabular.html' %}
+{% endfor %}
+{% endblock %}
